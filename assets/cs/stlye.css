@@ -1,0 +1,30 @@
+:root{
+    --Primarycolor: white;
+    --secondarycolor: lightgreen;
+
+}
+
+.searchbar{
+    width: 60%;
+}
+
+.ui{
+    height: 100px;
+    width: 350px;
+    border-radius: 17px;
+
+}
+
+.results{
+    margin-top: 10px;
+    background-color: var(--secondarycolor);
+    height: 150px;
+    border-radius: 17px;
+}
+
+.fav{
+    background-color: lightgrey;
+    height: 500px;
+    width:150px;
+    
+}

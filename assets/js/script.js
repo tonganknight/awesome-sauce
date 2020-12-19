@@ -1,9 +1,21 @@
 
+//Radio button logic 
 
-//our search function 
+
+
+
+
+
+
+function seachforfood(){
     /*ingredientSearch*/
 
-        var search = "tomato"
+    var searchbar = document.getElementById("searchbar")
+
+    var search =searchbar.value
+
+    search = search.trim();
+        
 
         var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e"
 
@@ -120,7 +132,7 @@
 
 
             //data storage for Fav list 
-
+            
 
 
         
@@ -134,17 +146,17 @@
         alert("Unable to connect");
     }); 
 
-//}); 
+}
 
 //Event Listeners 
 
     //search listener 
-        /*document.getElementById("Ourseachbutton").addEventListener("click", function(){
+        document.getElementById("search").addEventListener("click", function(){
 
-        //our searchfunction()
+        searchforfood();
 
-        ]); */
-    
+        });
+
 
 //drop logic 
 
