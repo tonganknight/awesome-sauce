@@ -7,12 +7,12 @@
 
 
 
-function seachforfood(){
+function foodsearch(){
     /*ingredientSearch*/
 
     var searchbar = document.getElementById("searchbar")
 
-    var search =searchbar.value
+    var search = searchbar.value;
 
     search = search.trim();
         
@@ -25,6 +25,7 @@ function seachforfood(){
                 
                 response.json().then(function(data) {
                     console.log(data)
+                
 
                 //object data 
 
@@ -125,8 +126,51 @@ function seachforfood(){
 
 
             //write data 
+                var group = document.getElementById("group-items");
 
+                //write first 
+                var createLi = document.createElement("li");
+                createLi.setAttribute("Id",recipe1);
+                createLi.setAttribute("class", "results");
+                createLi.style.backgroundImage = "url(" + recipe1img +")";
+                createLi.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe1 +"</a>";
+                group.appendChild(createLi);
 
+                //write Second 
+                var createLi = document.createElement("li");
+                createLi.setAttribute("Id",recipe2);
+                createLi.setAttribute("class", "results");
+                createLi.style.backgroundImage = "url(" + recipe2img +")";
+                createLi.textContent = recipe2;
+                createLi.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe2 +"</a>";
+                group.appendChild(createLi);
+
+                //write Third
+                var createLi = document.createElement("li");
+                createLi.setAttribute("Id",recipe3);
+                createLi.setAttribute("class", "results");
+                createLi.style.backgroundImage = "url(" + recipe3img +")";
+                createLi.textContent = recipe3;
+                createLi.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe3 +"</a>";
+                group.appendChild(createLi);
+                
+                //write Fourth
+                var createLi = document.createElement("li");
+                createLi.setAttribute("Id",recipe4);
+                createLi.setAttribute("class", "results");
+                createLi.style.backgroundImage = "url(" + recipe4img +")";
+                createLi.textContent = recipe4
+                createLi.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe4 +"</a>";
+                group.appendChild(createLi);
+
+                //write Fifth
+                var createLi = document.createElement("li");
+                createLi.setAttribute("Id",recipe5);
+                createLi.setAttribute("class", "results");
+                createLi.style.backgroundImage = "url(" + recipe5img +")";
+                createLi.textContent = recipe5;
+                createLi.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe5 +"</a>";
+                group.appendChild(createLi);
                 //(we need to produce our HTML and CSS before we tackle this)
 
 
@@ -150,10 +194,10 @@ function seachforfood(){
 
 //Event Listeners 
 
-    //search listener 
+    //search button  listener 
         document.getElementById("search").addEventListener("click", function(){
 
-        searchforfood();
+            foodsearch();
 
         });
 
