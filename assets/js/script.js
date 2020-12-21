@@ -45,7 +45,7 @@ function foodsearch(){
 
 
                     //list of ingredients
-                var recipe1ingr =data.hits[1].recipe.ingredientLines;
+                var recipe1ingr =data.hits[0].recipe.ingredientLines;
                 
 
                 //Second Recipe
@@ -127,18 +127,33 @@ function foodsearch(){
 
             //write data 
                 var group = document.getElementById("group-items");
+                var groupingr = document.getElementById("ingr")
 
                 //write first 
                 var createLi = document.createElement("li");
-                createLi.setAttribute("Id",recipe1);
+                createLi.setAttribute("Id", "first");
                 createLi.setAttribute("class", "results");
                 createLi.style.backgroundImage = "url(" + recipe1img +")";
                 createLi.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe1 +"</a>";
                 group.appendChild(createLi);
 
+                //build ingredients list
+
+                for(i=0; i< recipe1ingr.length; i++){
+                    
+                    var createingr = document.createElement("p");
+                    createingr.setAttribute("id", recipe1ingr[i]);
+                    createingr.innerHTML = recipe1ingr[i];
+                    groupingr.appendChild(createingr);
+
+                }
+
+                //hid ingredients for hover effect
+                document.getElementById("ingr").style.visibility = "hidden";
+
                 //write Second 
                 var createLi = document.createElement("li");
-                createLi.setAttribute("Id",recipe2);
+                createLi.setAttribute("Id","second");
                 createLi.setAttribute("class", "results");
                 createLi.style.backgroundImage = "url(" + recipe2img +")";
                 createLi.textContent = recipe2;
@@ -147,7 +162,7 @@ function foodsearch(){
 
                 //write Third
                 var createLi = document.createElement("li");
-                createLi.setAttribute("Id",recipe3);
+                createLi.setAttribute("Id","third");
                 createLi.setAttribute("class", "results");
                 createLi.style.backgroundImage = "url(" + recipe3img +")";
                 createLi.textContent = recipe3;
@@ -156,7 +171,7 @@ function foodsearch(){
                 
                 //write Fourth
                 var createLi = document.createElement("li");
-                createLi.setAttribute("Id",recipe4);
+                createLi.setAttribute("Id", "fourth");
                 createLi.setAttribute("class", "results");
                 createLi.style.backgroundImage = "url(" + recipe4img +")";
                 createLi.textContent = recipe4
@@ -165,7 +180,7 @@ function foodsearch(){
 
                 //write Fifth
                 var createLi = document.createElement("li");
-                createLi.setAttribute("Id",recipe5);
+                createLi.setAttribute("Id", "fifth");
                 createLi.setAttribute("class", "results");
                 createLi.style.backgroundImage = "url(" + recipe5img +")";
                 createLi.textContent = recipe5;
@@ -178,7 +193,13 @@ function foodsearch(){
             //data storage for Fav list 
             
 
-
+            //event listeners for mouse over
+            document.getElementById("first").addEventListener("mouseover", function(){
+                document.getElementById("ingr").style.visibility = "visible";
+            });
+            document.getElementById("first").addEventListener("mouseout",function(){
+                document.getElementById("ingr").style.visibility = "hidden";
+            });
         
         });
 
