@@ -48,5 +48,15 @@
 .ingrlist{
     font-size: 10px;
     font-weight: bold;
+    margin-top: 15px;
 
+}
+
+.ingrlist1{
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 25px;
+    height: 100px;
+   
+   
 }

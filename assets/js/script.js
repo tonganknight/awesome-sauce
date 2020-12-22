@@ -127,7 +127,7 @@ function foodsearch(){
 
             //write data 
                 var group = document.getElementById("group-items");
-                var groupingr = document.getElementById("ingr")
+                
 
                 //write first 
                 var createLi = document.createElement("li");
@@ -137,19 +137,29 @@ function foodsearch(){
                 createLi.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe1 +"</a>";
                 group.appendChild(createLi);
 
-                //build ingredients list
+                //build ingredients list 1st item
+
+                    var dashcontainer =document.getElementById("dash-container")
+                    
+                    var firstbox = document.createElement("div");
+                    firstbox.setAttribute("Id", "ingr1");
+                    firstbox.classList.add("column")
+                    firstbox.classList.add("ingrlist")
+                    dashcontainer.appendChild(firstbox);
+
+
 
                 for(i=0; i< recipe1ingr.length; i++){
-                    
+
                     var createingr = document.createElement("p");
                     createingr.setAttribute("id", recipe1ingr[i]);
                     createingr.innerHTML = recipe1ingr[i];
-                    groupingr.appendChild(createingr);
+                    firstbox.appendChild(createingr);
 
                 }
 
                 //hid ingredients for hover effect
-                document.getElementById("ingr").style.visibility = "hidden";
+                document.getElementById("ingr1").style.display = "none";
 
                 //write Second 
                 var createLi = document.createElement("li");
@@ -160,6 +170,32 @@ function foodsearch(){
                 createLi.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe2 +"</a>";
                 group.appendChild(createLi);
 
+                 //build ingredients list 2nt item
+
+                 var dashcontainer =document.getElementById("dash-container") 
+                 var secondbox = document.createElement("div");
+                 secondbox.setAttribute("Id", "ingr2");
+                 secondbox.classList.add("ingrlist1")
+                 secondbox.classList.add("column")
+                 firstbox.appendChild(secondbox);
+
+
+
+                for(i=0; i< recipe2ingr.length; i++){
+
+                 var createingr = document.createElement("p");
+                 createingr.setAttribute("id", recipe2ingr[i]);
+                 createingr.innerHTML = recipe2ingr[i];
+                 secondbox.appendChild(createingr);
+
+                }
+
+             //hid ingredients for hover effect
+             document.getElementById("ingr2").style.display = "none";
+
+
+
+
                 //write Third
                 var createLi = document.createElement("li");
                 createLi.setAttribute("Id","third");
@@ -168,6 +204,28 @@ function foodsearch(){
                 createLi.textContent = recipe3;
                 createLi.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe3 +"</a>";
                 group.appendChild(createLi);
+
+                //build ingredients list 3rd item
+
+                var dashcontainer =document.getElementById("dash-container") 
+                var thirdbox = document.createElement("div");
+                thirdbox.setAttribute("Id", "ingr3");
+                thirdbox.classList.add("ingrlist1")
+                secondbox.appendChild(thirdbox);
+
+
+
+               for(i=0; i< recipe3ingr.length; i++){
+
+                var createingr = document.createElement("p");
+                createingr.setAttribute("id", recipe3ingr[i]);
+                createingr.innerHTML = recipe3ingr[i];
+                thirdbox.appendChild(createingr);
+
+               }
+
+            //hid ingredients for hover effect
+            document.getElementById("ingr3").style.display = "none";
                 
                 //write Fourth
                 var createLi = document.createElement("li");
@@ -194,13 +252,30 @@ function foodsearch(){
             
 
             //event listeners for mouse over
+
+            //1st option 
             document.getElementById("first").addEventListener("mouseover", function(){
-                document.getElementById("ingr").style.visibility = "visible";
+                document.getElementById("ingr1").style.display = "block";
             });
-            document.getElementById("first").addEventListener("mouseout",function(){
-                document.getElementById("ingr").style.visibility = "hidden";
+
+            /*document.getElementById("first").addEventListener("mouseout",function(){
+                document.getElementById("ingr1").style.display = "none";
+            }); */ //cann't display none because the other recipes are child elements to this one 
+
+            //2nd option
+            document.getElementById("second").addEventListener("mouseover", function(){
+                document.getElementById("ingr2").style.display = "block";
             });
-        
+
+            /*document.getElementById("second").addEventListener("mouseout",function(){
+                document.getElementById("ingr2").style.display = "none";
+            }); */ //can't display none due to child elements
+
+            //3rd option
+            document.getElementById("third").addEventListener("mouseover", function(){
+                document.getElementById("ingr3").style.display = "block";
+            });
+
         });
 
      } else {
