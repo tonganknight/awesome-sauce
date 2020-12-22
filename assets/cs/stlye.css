@@ -10,15 +10,18 @@
 
 .ui{
     height: 100px;
-    width: 350px;
+    width: 250px;
     border-radius: 17px;
+    margin-right: 5px;
 
 }
 
 .results{
     margin-top: 10px;
+    margin-right: 5px;;
     background-color: var(--secondarycolor);
-    height: 150px;
+    height: 125px;
+    width: 50%;
     border-radius: 17px;
 }
 
@@ -27,4 +30,16 @@
     height: 500px;
     width:150px;
     
+}
+
+.link{
+    text-decoration: none; /*this targets the link that is created in the javascript. this id only exists once some one searches something*/
+    background-color: white;
+    color: black;
+}
+
+.test{
+    display: inline-block;
+    margin:auto;
+    font-size: 10px;
 }
