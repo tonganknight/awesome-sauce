@@ -10,7 +10,7 @@
 
 .ui{
     height: 100px;
-    width: 250px;
+    width: 100%;
     border-radius: 17px;
     margin-right: 5px;
 
@@ -18,12 +18,15 @@
 
 .results{
     margin-top: 10px;
-    margin-right: 5px;
-    margin-left: 25px;
+    margin-right: 5px;;
     background-color: var(--secondarycolor);
     height: 125px;
-    width: 50%;
+    width: 100%;
     border-radius: 17px;
+}
+
+.a.results{
+    margin-left:15px;
 }
 
 .fav{
@@ -39,24 +42,19 @@
     color: black;
 }
 
-.test{
+.ingr{
     display: inline-block;
-    margin:auto;
     font-size: 10px;
-}
-
-.ingrlist{
-    font-size: 10px;
-    font-weight: bold;
-    margin-top: 15px;
+    margin-top: 25x;
+    margin-left: 15px;
+    overflow: scroll;
 
 }
+.flex{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
 
-.ingrlist1{
-    font-size: 10px;
-    font-weight: bold;
-    margin-top: 25px;
-    height: 100px;
-   
-   
 }
