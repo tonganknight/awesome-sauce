@@ -1,9 +1,7 @@
 :root{
     --Primarycolor: white;
     --secondarycolor: lightgreen;
-
 }
-
 .searchbar{
     width: 60%;
 }
@@ -35,7 +33,6 @@
     width:150px;
     
 }
-
 .link{
     text-decoration: none; /*this targets the link that is created in the javascript. this id only exists once some one searches something*/
     background-color: white;
@@ -45,11 +42,15 @@
 .ingr{
     display: inline-block;
     font-size: 10px;
-    margin-top: 25x;
+    font-weight: bold;
+    margin-top: 25px;
     margin-left: 15px;
+    height: 100px;
+    width: 100%;
     overflow: scroll;
 
 }
+
 .flex{
     display:flex;
     flex-direction: row;
@@ -57,4 +58,6 @@
     width: 100%;
     margin: 0;
 
-}
+
+
+
