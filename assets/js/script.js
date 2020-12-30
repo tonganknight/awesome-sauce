@@ -131,7 +131,8 @@ function foodsearch(){
                 ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
                }
 
-               var dropzoneDrag = function(event){
+               //change dropzone to another color while draging
+            var dropzoneDrag = function(event){
 
                  var zone = event.target.closest(".fav");
 
@@ -147,25 +148,55 @@ function foodsearch(){
                     var id = event.dataTransfer.getData("text/plain");
                     var outhtml = event.dataTransfer.getData("text/outhtml");
                     var inhtml = event.dataTransfer.getData("text/innerhtml");
-                    document.getElementById("fav").style.backgroundColor ="lightgrey"
+                    document.getElementById("fav").style.backgroundColor ="lightgrey";
+
+                    //remove the recipe ingr when its dropped 
                     document.getElementById("ingrlist1").style.display ="none";
-                   var El = document.getElementById("thumb1")
+
+
+
+
+                //declarations to append. 
+                   var El = document.getElementById("thumb0")
                    var zone = document.getElementById("fav")
 
-
+                //appending 
                    zone.appendChild(El);
-                    
 
+                   //local storage 
 
-               }
+                   //get how many divs are in the fav
+                    var divcount = document.getElementById("fav").childElementCount;
+
+                    //if there is more than 1... do this for every div 
+                    if(divcount > 0){
+                        // loop through each stored item, and store the info
+                        for(i=0; i < divcount; i++){
+
+                            var thumbTitle = document.getElementById("link" + [i]).textContent;
+                            window.localStorage.setItem("thumbtitle" + [i] ,thumbTitle);
+                            var thumbimage =document.getElementById("thumb"+ [i]).style.backgroundImage
+                            window.localStorage.setItem("thumbimage" + [i], thumbimage);
+                            var thumblink = document.getElementById("link" + [i]).href 
+                            window.localStorage.setItem("thumblink" + [i], thumblink);
+
+                        }
+                        window.localStorage.setItem("favcount", divcount);
+                    }
+ 
+            }
+
+               
+
+    
 
                 //write first thumb
                 var creatediv = document.createElement("div");
-                creatediv.setAttribute("Id","thumb1");
+                creatediv.setAttribute("Id","thumb0");
                 creatediv.setAttribute("class", "results");
                 creatediv.setAttribute("draggable", "true");
                 creatediv.style.backgroundImage = "url(" + recipe1img +")";
-                creatediv.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe1 +"</a>";
+                creatediv.innerHTML = "<a target='blank' Id='link0' href="+ recipe1link + ">" + recipe1 +"</a>";
                 flex1.appendChild(creatediv);
 
                 //write first recipe 
@@ -186,24 +217,28 @@ function foodsearch(){
                 document.getElementById("ingrlist1").style.visibility ="hidden"
 
                   //recipe event listeners for first recipe 
-                    document.getElementById("thumb1").addEventListener("mouseover", function(){
+                    document.getElementById("thumb0").addEventListener("mouseover", function(){
                     document.getElementById("ingrlist1").style.visibility = "visible";
                     });
 
-                    document.getElementById("thumb1").addEventListener("mouseout", function(){
+                    document.getElementById("thumb0").addEventListener("mouseout", function(){
                        
                         document.getElementById("ingrlist1").style.visibility = "hidden";
                     
                     });
+
+
+                   
+
 
                     //drag and drop handelers
 
                     document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
 
 
-                    document.getElementById("thumb1").addEventListener("dragstart", draghandler);
+                    document.getElementById("thumb0").addEventListener("dragstart", draghandler);
 
-                    document.addEventListener("drop", dropZone);
+                    document.getElementById("fav").addEventListener("drop", dropZone);
 
                    
                     
@@ -400,12 +435,44 @@ function foodsearch(){
                });
        
        
+// loading our local storage
+function Load(){
+    //declare how many we had stored in the fav bar 
+    var getcount = window.localStorage.getItem("favcount")
+    
+    //run a loop to write a division plus all the content we have stored for each one 
+    for(i=0; i< getcount; i++){
+
+        //declarations 
+        var favbar = document.getElementById("fav");
+        var gettitle = window.localStorage.getItem("thumbtitle0");
+        var getimage = window.localStorage.getItem("thumbimage" + [i]);
+        var getlink = window.localStorage.getItem("thumblink" + [i]);
+
+        //write the division, and add all the attributes.
+        var loaddiv = document.createElement("div");
+        loaddiv.setAttribute ("id", "thumb" +[i]);
+        loaddiv.setAttribute("class", "results");
+        loaddiv.setAttribute("draggable", "true");
+        loaddiv.style.backgroundImage = getimage;
+
+        //add our link to the new created div
+        loaddiv.innerHTML = "<a target='blank' Id='link'" + " href=" + getlink + ">" + gettitle + "</a>"
+
+        //append it to the bar.
+        favbar.appendChild(loaddiv);
+
+
+    }
+
+
+
+}   
        
-       //drop logic 
-       
        
 
 
 
 
-
+// we want this to load the data on the page first 
+Load();
