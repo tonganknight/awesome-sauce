@@ -129,6 +129,7 @@ function foodsearch(){
                 ev.dataTransfer.setData("text/plain", ev.target.innerText);
                 ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
                 ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
+                ev.dataTransfer.setData("div",ev.target.id)
                }
 
                //change dropzone to another color while draging
@@ -144,12 +145,13 @@ function foodsearch(){
 
                }
 
-               var dropZone = function(event) {
+            var dropZone = function(event) {
                     var id = event.dataTransfer.getData("text/plain");
                     var outhtml = event.dataTransfer.getData("text/outhtml");
                     var inhtml = event.dataTransfer.getData("text/innerhtml");
+                    var target = event.dataTransfer.getData("div")
                     document.getElementById("fav").style.backgroundColor ="lightgrey";
-
+                    
                     //remove the recipe ingr when its dropped 
                     document.getElementById("ingrlist1").style.display ="none";
 
@@ -157,35 +159,110 @@ function foodsearch(){
 
 
                 //declarations to append. 
-                   var El = document.getElementById("thumb0")
-                   var zone = document.getElementById("fav")
+                   var El = document.getElementById(target);
+                   var zone = document.getElementById("fav");
 
                 //appending 
                    zone.appendChild(El);
 
-                   //local storage 
 
-                   //get how many divs are in the fav
-                    var divcount = document.getElementById("fav").childElementCount;
+                   var divcount = document.getElementById("fav").childElementCount;
+               
+                console.log("divcount" + divcount)
 
-                    //if there is more than 1... do this for every div 
-                    if(divcount > 0){
-                        // loop through each stored item, and store the info
-                        for(i=0; i < divcount; i++){
 
-                            var thumbTitle = document.getElementById("link" + [i]).textContent;
-                            window.localStorage.setItem("thumbtitle" + [i] ,thumbTitle);
-                            var thumbimage =document.getElementById("thumb"+ [i]).style.backgroundImage
-                            window.localStorage.setItem("thumbimage" + [i], thumbimage);
-                            var thumblink = document.getElementById("link" + [i]).href 
-                            window.localStorage.setItem("thumblink" + [i], thumblink);
 
+                   // this is a set of if statments are in the fav when an element is dropped. It assigns a numerical value for the id for the id 
+                    if(divcount <= 1){
+                        var tek =document.getElementById(target).id = 0
+                    }else{
+                        
+                        var divcount = document.getElementById("fav").childElementCount;
+                        var vin =0
+
+                            if(divcount == 2){
+                            var firstchild = document.getElementById("fav").firstChild.id = vin
+                            var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+
+                            }
+                            if(divcount == 3){
+                            var firstchild = document.getElementById("fav").firstChild.id = vin
+                            var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                            var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                            }
+                            if(divcount == 4){
+                                var firstchild = document.getElementById("fav").firstChild.id = vin
+                                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                                var thirdchild= document.getElementById("1").nextElementSibling.id = vin +2;
+                                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3
+                            }
+                            if(divcount ==5){
+                                var firstchild = document.getElementById("fav").firstChild.id = vin
+                                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                                var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+                                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
                         }
-                        window.localStorage.setItem("favcount", divcount);
-                    }
- 
+
+                    
+
+
+                   
+
+
+                   
+                    
+                
+                }
             }
 
+
+
+            
+            
+                //local storage 
+
+                //save button
+                document.getElementById("greenbutton").addEventListener("click", function(){
+                     //get how many divs are in the fav
+                    var divcount = document.getElementById("fav").childElementCount;
+                    console.log(divcount);
+                    
+                        //save div count for later 
+                        window.localStorage.setItem("favcount", divcount);
+
+                        var fav =document.getElementById("fav");
+
+                          //loop through each 
+                           for(i=0; i < divcount; i++){
+
+
+                            
+                            
+                           var thumbtitle = document.getElementById([i]).textContent;
+                           window.localStorage.setItem("thumbtitle" + [i], thumbtitle);
+                           var thumbimage = document.getElementById([i]).style.backgroundImage;
+                           window.localStorage.setItem("thumbimage" + [i], thumbimage);
+                           var thumblink = document.getElementById([i]).firstChild;
+                           window.localStorage.setItem("thumblink" + [i], thumblink);
+
+
+                           /* var thumbimage = document.getElementById([i]).style.backgroundImage.textContent
+                            window.localStorage.setItem("thumbimage" + [i], thumbimage);
+
+                           var thumblink = document.getElementById([i]).href.textContent
+
+                           console.log(thumblink);
+                           window.localStorage.setItem("thumblink" + [i], thumblink)*/
+                            
+                            
+                            
+                           
+                           
+                        }
+                       
+
+                });
                
 
     
@@ -223,13 +300,9 @@ function foodsearch(){
 
                     document.getElementById("thumb0").addEventListener("mouseout", function(){
                        
-                        document.getElementById("ingrlist1").style.visibility = "hidden";
+                    document.getElementById("ingrlist1").style.visibility = "hidden";
                     
                     });
-
-
-                   
-
 
                     //drag and drop handelers
 
@@ -249,10 +322,11 @@ function foodsearch(){
     
                     //write second thumb
                     var creatediv2 = document.createElement("div");
-                    creatediv2.setAttribute("Id","thumb2");
+                    creatediv2.setAttribute("Id","thumb1");
                     creatediv2.setAttribute("class", "results");
+                    creatediv2.setAttribute("draggable", "true");
                     creatediv2.style.backgroundImage = "url(" + recipe2img +")";
-                    creatediv2.innerHTML = "<a target='blank' Id='link' href="+ recipe2link + ">" + recipe2 +"</a>";
+                    creatediv2.innerHTML = "<a target='blank' Id='link1' href="+ recipe2link + ">" + recipe2 +"</a>";
                     flex2.appendChild(creatediv2);
     
                     //write second recipe 
@@ -273,13 +347,16 @@ function foodsearch(){
                 document.getElementById("ingrlist2").style.visibility ="hidden"
 
                 //recipe event listeners for second recipe 
-                  document.getElementById("thumb2").addEventListener("mouseover", function(){
+                  document.getElementById("thumb1").addEventListener("mouseover", function(){
                   document.getElementById("ingrlist2").style.visibility = "visible";
                   });
 
-                  document.getElementById("thumb2").addEventListener("mouseout", function(){
+                  document.getElementById("thumb1").addEventListener("mouseout", function(){
                   document.getElementById("ingrlist2").style.visibility = "hidden";
                   });
+
+                  document.getElementById("thumb1").addEventListener("dragstart", draghandler);
+
 
 
                     //write third file 
@@ -445,23 +522,24 @@ function Load(){
 
         //declarations 
         var favbar = document.getElementById("fav");
-        var gettitle = window.localStorage.getItem("thumbtitle0");
+        var gettitle = window.localStorage.getItem("thumbtitle" +[i]);
         var getimage = window.localStorage.getItem("thumbimage" + [i]);
         var getlink = window.localStorage.getItem("thumblink" + [i]);
 
         //write the division, and add all the attributes.
         var loaddiv = document.createElement("div");
-        loaddiv.setAttribute ("id", "thumb" +[i]);
+        loaddiv.setAttribute ("id", [i]);
         loaddiv.setAttribute("class", "results");
         loaddiv.setAttribute("draggable", "true");
         loaddiv.style.backgroundImage = getimage;
 
         //add our link to the new created div
-        loaddiv.innerHTML = "<a target='blank' Id='link'" + " href=" + getlink + ">" + gettitle + "</a>"
+        loaddiv.innerHTML = "<a target='blank' Id='link'" + " href=" + getlink + ">" + gettitle + "</a>";
+       
 
-        //append it to the bar.
+        //append it to the bar. 
         favbar.appendChild(loaddiv);
-
+      
 
     }
 
