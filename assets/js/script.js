@@ -145,6 +145,32 @@ function foodsearch(){
 
                }
 
+               var dropzoneDragTrash = function(event){
+
+                var zone = event.target.closest("#dump");
+
+                if(zone){
+                    zone.style.backgroundColor ="blue";
+
+                    event.preventDefault();
+                }
+
+              }
+
+              var dropZonetrash = function(event) {
+                var id = event.dataTransfer.getData("text/plain");
+                    var outhtml = event.dataTransfer.getData("text/outhtml");
+                    var inhtml = event.dataTransfer.getData("text/innerhtml");
+                    var target = event.dataTransfer.getData("div")
+                    document.getElementById("dump").style.backgroundColor ="red";
+
+                    document.getElementById(target).remove();
+                    
+                
+
+              }
+
+
             var dropZone = function(event) {
                     var id = event.dataTransfer.getData("text/plain");
                     var outhtml = event.dataTransfer.getData("text/outhtml");
@@ -307,11 +333,15 @@ function foodsearch(){
                     //drag and drop handelers
 
                     document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
+                    document.getElementById("dump").addEventListener("dragover", dropzoneDragTrash);
+
+                    
 
 
                     document.getElementById("thumb0").addEventListener("dragstart", draghandler);
 
                     document.getElementById("fav").addEventListener("drop", dropZone);
+                    document.getElementById("dump").addEventListener("drop",dropZonetrash);
 
                    
                     
