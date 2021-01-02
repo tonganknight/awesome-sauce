@@ -5,6 +5,16 @@
 
 
 
+
+//select fav bar, count divs. Return ID for each div. This is to help selectors at the bottom find elements on the fav list 
+
+
+
+
+
+
+
+
 function foodsearch(){
     /*ingredientSearch*/
 
@@ -171,15 +181,16 @@ function foodsearch(){
               }
 
 
-            var dropZone = function(event) {
+                    var dropZone = function(event) {
                     var id = event.dataTransfer.getData("text/plain");
                     var outhtml = event.dataTransfer.getData("text/outhtml");
                     var inhtml = event.dataTransfer.getData("text/innerhtml");
                     var target = event.dataTransfer.getData("div")
                     document.getElementById("fav").style.backgroundColor ="lightgrey";
                     
-                    //remove the recipe ingr when its dropped 
-                    document.getElementById("ingrlist1").style.display ="none";
+
+                    //remove the targets recipe list when dropped
+                    document.getElementById(target).nextSibling.style.display = "none"; 
 
 
 
@@ -275,9 +286,7 @@ function foodsearch(){
 
                            /* var thumbimage = document.getElementById([i]).style.backgroundImage.textContent
                             window.localStorage.setItem("thumbimage" + [i], thumbimage);
-
                            var thumblink = document.getElementById([i]).href.textContent
-
                            console.log(thumblink);
                            window.localStorage.setItem("thumblink" + [i], thumblink)*/
                             
@@ -534,6 +543,73 @@ function foodsearch(){
                
            }); 
        }
+
+
+       //write drag and drop
+       var draghandler = function(ev){
+        ev.dataTransfer.setData("text/plain", ev.target.innerText);
+        ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
+        ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
+        ev.dataTransfer.setData("div",ev.target.id)
+       }
+
+       //change dropzone to another color while draging
+       var dropzoneDrag = function(event){
+
+        var zone = event.target.closest(".fav");
+
+        if(zone){
+            zone.style.backgroundColor ="var(--secondarycolor)";
+
+            event.preventDefault();
+        }
+
+      }
+
+      var dropzoneDragTrash = function(event){
+
+       var zone = event.target.closest("#dump");
+
+       if(zone){
+           zone.style.backgroundColor ="blue";
+
+           event.preventDefault();
+       }
+
+     }
+
+     var dropZonetrash = function(event) {
+       var id = event.dataTransfer.getData("text/plain");
+           var outhtml = event.dataTransfer.getData("text/outhtml");
+           var inhtml = event.dataTransfer.getData("text/innerhtml");
+           var target = event.dataTransfer.getData("div")
+           document.getElementById("dump").style.backgroundColor ="red";
+
+           document.getElementById(target).remove();
+           
+       
+
+     }
+
+
+           var dropZone = function(event) {
+           var id = event.dataTransfer.getData("text/plain");
+           var outhtml = event.dataTransfer.getData("text/outhtml");
+           var inhtml = event.dataTransfer.getData("text/innerhtml");
+           var target = event.dataTransfer.getData("div")
+           document.getElementById("fav").style.backgroundColor ="lightgrey";
+           
+           
+           //remove the targets recipe list when dropped
+           document.getElementById(target).nextSibling.style.display = "none"; 
+
+           }
+
+
+
+
+
+
        //Event Listeners 
            //search button  listener 
                document.getElementById("search").addEventListener("click", function(){
@@ -541,6 +617,16 @@ function foodsearch(){
        
                });
        
+               document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
+               document.getElementById("dump").addEventListener("dragover", dropzoneDragTrash);
+               //document.getElementById().addEventListener("dragstart", draghandler);
+                document.getElementById("fav").addEventListener("drop", dropZone);
+                document.getElementById("dump").addEventListener("drop",dropZonetrash);
+
+
+
+
+
        
 // loading our local storage
 function Load(){
@@ -566,6 +652,11 @@ function Load(){
         //add our link to the new created div
         loaddiv.innerHTML = "<a target='blank' Id='link'" + " href=" + getlink + ">" + gettitle + "</a>";
        
+        //add eventlistener
+        loaddiv.addEventListener("dragstart", draghandler);
+
+
+
 
         //append it to the bar. 
         favbar.appendChild(loaddiv);
