@@ -21,6 +21,17 @@ function foodsearch(){
 
                 response.json().then(function(data) {
                     console.log(data)
+
+
+            if( data.count == 0 ){
+                document.getElementById("modaldiv").classList.add("is-active");
+                document.getElementById("modal-off").addEventListener("click", function(){
+                document.getElementById("modaldiv").classList.remove("is-active");
+
+                });
+            }
+
+            
                 
                 //object data 
                 //First Recipe
@@ -119,10 +130,46 @@ function foodsearch(){
                 flex1.setAttribute("class", "flex");
                 group.appendChild(flex1);
 
+               //write drag and drop
+               var draghandler = function(ev){
+                ev.dataTransfer.setData("text/plain", ev.target.innerText);
+                ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
+                ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
+               }
+
+               var dropzoneDrag = function(event){
+
+                 var zone = event.target.closest(".fav");
+
+                 if(zone){
+                     zone.style.backgroundColor ="var(--secondarycolor)";
+
+                     event.preventDefault();
+                 }
+
+               }
+
+               var dropZone = function(event) {
+                    var id = event.dataTransfer.getData("text/plain");
+                    var outhtml = event.dataTransfer.getData("text/outhtml");
+                    var inhtml = event.dataTransfer.getData("text/innerhtml");
+                    document.getElementById("fav").style.backgroundColor ="lightgrey"
+                    document.getElementById("ingrlist1").style.display ="none";
+                   var El = document.getElementById("thumb1")
+                   var zone = document.getElementById("fav")
+
+
+                   zone.appendChild(El);
+                    
+
+
+               }
+
                 //write first thumb
                 var creatediv = document.createElement("div");
                 creatediv.setAttribute("Id","thumb1");
                 creatediv.setAttribute("class", "results");
+                creatediv.setAttribute("draggable", "true");
                 creatediv.style.backgroundImage = "url(" + recipe1img +")";
                 creatediv.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe1 +"</a>";
                 flex1.appendChild(creatediv);
@@ -151,9 +198,21 @@ function foodsearch(){
                     });
 
                     document.getElementById("thumb1").addEventListener("mouseout", function(){
-                    document.getElementById("ingrlist1").style.visibility = "hidden";
+                       
+                        document.getElementById("ingrlist1").style.visibility = "hidden";
+                    
                     });
 
+                    //drag and drop handelers
+
+                    document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
+
+
+                    document.getElementById("thumb1").addEventListener("dragstart", draghandler);
+
+                    document.addEventListener("drop", dropZone);
+
+                   
                     
                     //write second file
                     var flex2 = document.createElement("div");
@@ -305,7 +364,7 @@ function foodsearch(){
                     //make recipe5 invisible until hover
                     document.getElementById("ingrlist5").style.visibility ="hidden"
 
-                    //recipe event listeners for fifth recipe 
+                    //recipe event listeners for fourth recipe 
                     document.getElementById("thumb5").addEventListener("mouseover", function(){
                     document.getElementById("ingrlist5").style.visibility = "visible";
                     });
@@ -319,11 +378,25 @@ function foodsearch(){
                 });
 
             } else {
-               alert("Error: " + response.statusText);
+                document.getElementById("modaldiv").addClass("is-active");
+                document.getElementById("thedeal").textContent = "It looks like we are having trouble connecting you. You might want to try again later"
+                document.getElementById("modal-off").addEventListener("click", function(){
+                document.getElementById("modaldiv").removeClass("is-active");
+
+                });
+
+
                }
            })
            .catch(function(error) {
-               alert("Unable to connect");
+
+            document.getElementById("modaldiv").addClass("is-active");
+            document.getElementById("thedeal").textContent = "It looks like we are having trouble connecting you. You might want to try again later"
+            document.getElementById("modal-off").addEventListener("click", function(){
+            document.getElementById("modaldiv").removeClass("is-active");
+
+            });
+               
            }); 
        }
        //Event Listeners 
