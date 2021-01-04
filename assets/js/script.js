@@ -275,6 +275,8 @@ function foodsearch(){
 
 
                 //write first thumb
+
+
                 var creatediv = document.createElement("div");
                 creatediv.setAttribute("Id","thumb0");
                 creatediv.setAttribute("class", "results");
@@ -317,10 +319,7 @@ function foodsearch(){
 
                     document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
                     document.getElementById("dump").addEventListener("dragover", dropzoneDragTrash);
-
-                    
-
-
+             
                     document.getElementById("thumb0").addEventListener("dragstart", draghandler);
 
                     document.getElementById("fav").addEventListener("drop", dropZone);
@@ -328,7 +327,7 @@ function foodsearch(){
 
                    
                     
-                    //write second file
+                   //write second file
                     var flex2 = document.createElement("div");
                     flex2.setAttribute("class", "flex");
                     group.appendChild(flex2);
@@ -356,7 +355,7 @@ function foodsearch(){
 
                     }
 
-                    //make recipe2 invisible until hover
+                 //make recipe2 invisible until hover
                 document.getElementById("ingrlist2").style.visibility ="hidden"
 
                 //recipe event listeners for second recipe 
@@ -379,7 +378,8 @@ function foodsearch(){
     
                     //write third thumb
                     var creatediv3 = document.createElement("div");
-                    creatediv3.setAttribute("Id","thumb3");
+                    creatediv3.setAttribute("Id","thumb2");
+                    creatediv3.setAttribute("draggable", "true");
                     creatediv3.setAttribute("class", "results");
                     creatediv3.style.backgroundImage = "url(" + recipe3img +")";
                     creatediv3.innerHTML = "<a target='blank' Id='link' href="+ recipe3link + ">" + recipe3 +"</a>";
@@ -403,13 +403,16 @@ function foodsearch(){
                     document.getElementById("ingrlist3").style.visibility ="hidden"
 
                     //recipe event listeners for third recipe 
-                    document.getElementById("thumb3").addEventListener("mouseover", function(){
+                    document.getElementById("thumb2").addEventListener("mouseover", function(){
                     document.getElementById("ingrlist3").style.visibility = "visible";
                     });
 
-                    document.getElementById("thumb3").addEventListener("mouseout", function(){
-                    document.getElementById("ingrlist3").style.visibility = "hidden";
+                    document.getElementById("thumb2").addEventListener("mouseout", function(){
+                    document.getElementById("ingrlist3").style.visibility = "hidden"
                     });
+
+                    document.getElementById("thumb2").addEventListener("dragstart", draghandler);
+                    
 
 
                      //write Fourth file 
@@ -419,8 +422,9 @@ function foodsearch(){
      
                      //write Fourth thumb
                      var creatediv4 = document.createElement("div");
-                     creatediv4.setAttribute("Id","thumb4");
+                     creatediv4.setAttribute("Id","thumb3");
                      creatediv4.setAttribute("class", "results");
+                     creatediv4.setAttribute("draggable", "true");
                      creatediv4.style.backgroundImage = "url(" + recipe4img +")";
                      creatediv4.innerHTML = "<a target='blank' Id='link' href="+ recipe4link + ">" + recipe4 +"</a>";
                      flex4.appendChild(creatediv4);
@@ -443,13 +447,15 @@ function foodsearch(){
                      document.getElementById("ingrlist4").style.visibility ="hidden"
  
                      //recipe event listeners for fourth recipe 
-                     document.getElementById("thumb4").addEventListener("mouseover", function(){
+                     document.getElementById("thumb3").addEventListener("mouseover", function(){
                      document.getElementById("ingrlist4").style.visibility = "visible";
                      });
  
-                     document.getElementById("thumb4").addEventListener("mouseout", function(){
+                     document.getElementById("thumb3").addEventListener("mouseout", function(){
                      document.getElementById("ingrlist4").style.visibility = "hidden";
                      });
+
+                     document.getElementById("thumb3").addEventListener("dragstart", draghandler);
 
                      
                     //write fifth
@@ -459,8 +465,9 @@ function foodsearch(){
     
                     //write Fourth thumb
                     var creatediv5 = document.createElement("div");
-                    creatediv5.setAttribute("Id","thumb5");
+                    creatediv5.setAttribute("Id","thumb4");
                     creatediv5.setAttribute("class", "results");
+                    creatediv5.setAttribute("draggable", "true");
                     creatediv5.style.backgroundImage = "url(" + recipe5img +")";
                     creatediv5.innerHTML = "<a target='blank' Id='link' href="+ recipe5link + ">" + recipe5 +"</a>";
                     flex5.appendChild(creatediv5);
@@ -469,6 +476,7 @@ function foodsearch(){
                     var ingrlist5 = document.createElement("div");
                     ingrlist5.setAttribute("id", "ingrlist5");
                     ingrlist5.setAttribute("class", "ingr")
+                    
                     flex5.appendChild(ingrlist5);
     
                     //write ingr list 
@@ -483,13 +491,15 @@ function foodsearch(){
                     document.getElementById("ingrlist5").style.visibility ="hidden"
 
                     //recipe event listeners for fourth recipe 
-                    document.getElementById("thumb5").addEventListener("mouseover", function(){
+                    document.getElementById("thumb4").addEventListener("mouseover", function(){
                     document.getElementById("ingrlist5").style.visibility = "visible";
                     });
 
-                    document.getElementById("thumb5").addEventListener("mouseout", function(){
+                    document.getElementById("thumb4").addEventListener("mouseout", function(){
                     document.getElementById("ingrlist5").style.visibility = "hidden";
-                    });
+                    }); 
+
+                    document.getElementById("thumb4").addEventListener("dragstart", draghandler);
 
 
                     window.localStorage.setItem("searchyes", "true")
@@ -574,8 +584,7 @@ function foodsearch(){
            document.getElementById("fav").style.backgroundColor ="lightgrey";
            
            
-           //remove the targets recipe list when dropped
-           document.getElementById(target).nextSibling.style.display = "none"; 
+          
 
            }
 
