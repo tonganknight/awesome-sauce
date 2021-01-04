@@ -90,6 +90,19 @@
     align-items: center;
 }
 
+.trashopen{
+    background-color: blue;
+    margin: 0;
+    max-height: 575px;
+    max-width: 125px;
+    color: white;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .trashtext{
     
     font-size: 50px;
