@@ -14,6 +14,8 @@ function foodsearch(){
         
 
         var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e"
+
+
         fetch(apiUrl).then (function(response){
             if (response.ok) {
 
@@ -41,6 +43,9 @@ function foodsearch(){
             
                     //link for recipe 
                 var recipe1link = data.hits[0].recipe.url;
+                  
+
+
 
                     //list of ingredients
                     var recipe1ingr =data.hits[0].recipe.ingredientLines;
@@ -114,6 +119,7 @@ function foodsearch(){
                     
             
             
+
                 //list of ingredients
                 var recipe5ingr = data.hits[4].recipe.ingredientLines;
 
@@ -292,6 +298,7 @@ function foodsearch(){
 
                 //make recipe invisible until hover
                 document.getElementById("ingrlist1").style.visibility ="hidden"
+
 
                   //recipe event listeners for first recipe 
                     document.getElementById("thumb0").addEventListener("mouseover", function(){
@@ -547,10 +554,6 @@ function Load(){
 
 }   
        
-       
-
-
-
 
 // we want this to load the data on the page first 
 Load();
