@@ -1,12 +1,17 @@
 //Radio button logic 
 
 
+// search logic check. this shows that the search bar has not been clocked yet 
+var searchyes = false;
 
+window.localStorage.setItem("searchyes", "false")
 
+// this deletes all search results. Its used later if the search button has already been clicked
+function refreshsearch (){
+    
+    $("#dashboard div").html("");
+};
 
-
-
-//select fav bar, count divs. Return ID for each div. This is to help selectors at the bottom find elements on the fav list 
 
 
 
@@ -16,7 +21,16 @@
 
 
 function foodsearch(){
-    /*ingredientSearch*/
+
+    //this checks weather the search button has already been clocked.
+    var searchcheck = window.localStorage.getItem("searchyes");
+
+    // if the search button as already been used once, this removes the old results, so the new search will replace them
+    if(searchcheck == "true"){
+        refreshsearch();
+    
+
+    }
 
     var searchbar = document.getElementById("searchbar")
     var search = searchbar.value;
@@ -290,11 +304,6 @@ function foodsearch(){
                            window.localStorage.setItem("thumblink" + [i], thumblink);
 
 
-                           /* var thumbimage = document.getElementById([i]).style.backgroundImage.textContent
-                            window.localStorage.setItem("thumbimage" + [i], thumbimage);
-                           var thumblink = document.getElementById([i]).href.textContent
-                           console.log(thumblink);
-                           window.localStorage.setItem("thumblink" + [i], thumblink)*/
                             
                             
                             
@@ -330,6 +339,8 @@ function foodsearch(){
                     ingrlist1.appendChild(ingr1);
 
                 }
+
+                
 
                 //make recipe invisible until hover
                 document.getElementById("ingrlist1").style.visibility ="hidden"
@@ -525,7 +536,7 @@ function foodsearch(){
                     });
 
 
-
+                    window.localStorage.setItem("searchyes", "true")
                 });
 
             } else {
@@ -626,7 +637,6 @@ function foodsearch(){
        
                document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
                document.getElementById("dump").addEventListener("dragover", dropzoneDragTrash);
-               //document.getElementById().addEventListener("dragstart", draghandler);
                 document.getElementById("fav").addEventListener("drop", dropZone);
                 document.getElementById("dump").addEventListener("drop",dropZonetrash);
 
