@@ -135,9 +135,11 @@ function foodsearch(){
                 ev.dataTransfer.setData("text/plain", ev.target.innerText);
                 ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
                 ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
+                ev.dataTransfer.setData("div",ev.target.id)
                }
 
-               var dropzoneDrag = function(event){
+               //change dropzone to another color while draging
+            var dropzoneDrag = function(event){
 
                  var zone = event.target.closest(".fav");
 
@@ -149,29 +151,135 @@ function foodsearch(){
 
                }
 
-               var dropZone = function(event) {
+            var dropZone = function(event) {
                     var id = event.dataTransfer.getData("text/plain");
                     var outhtml = event.dataTransfer.getData("text/outhtml");
                     var inhtml = event.dataTransfer.getData("text/innerhtml");
-                    document.getElementById("fav").style.backgroundColor ="lightgrey"
+                    var target = event.dataTransfer.getData("div")
+                    document.getElementById("fav").style.backgroundColor ="lightgrey";
+                    
+                    //remove the recipe ingr when its dropped 
                     document.getElementById("ingrlist1").style.display ="none";
-                   var El = document.getElementById("thumb1")
-                   var zone = document.getElementById("fav")
 
 
+
+
+                //declarations to append. 
+                   var El = document.getElementById(target);
+                   var zone = document.getElementById("fav");
+
+                //appending 
                    zone.appendChild(El);
+
+
+                   var divcount = document.getElementById("fav").childElementCount;
+               
+                console.log("divcount" + divcount)
+
+
+
+                   // this is a set of if statments are in the fav when an element is dropped. It assigns a numerical value for the id for the id 
+                    if(divcount <= 1){
+                        var tek =document.getElementById(target).id = 0
+                    }else{
+                        
+                        var divcount = document.getElementById("fav").childElementCount;
+                        var vin =0
+
+                            if(divcount == 2){
+                            var firstchild = document.getElementById("fav").firstChild.id = vin
+                            var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+
+                            }
+                            if(divcount == 3){
+                            var firstchild = document.getElementById("fav").firstChild.id = vin
+                            var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                            var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                            }
+                            if(divcount == 4){
+                                var firstchild = document.getElementById("fav").firstChild.id = vin
+                                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                                var thirdchild= document.getElementById("1").nextElementSibling.id = vin +2;
+                                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3
+                            }
+                            if(divcount ==5){
+                                var firstchild = document.getElementById("fav").firstChild.id = vin
+                                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                                var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+                                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
+                        }
+
                     
 
 
-               }
+                   
+
+
+                   
+                    
+                
+                }
+            }
+
+
+
+            
+            
+                //local storage 
+
+                //save button
+                document.getElementById("greenbutton").addEventListener("click", function(){
+                     //get how many divs are in the fav
+                    var divcount = document.getElementById("fav").childElementCount;
+                    console.log(divcount);
+                    
+                        //save div count for later 
+                        window.localStorage.setItem("favcount", divcount);
+
+                        var fav =document.getElementById("fav");
+
+                          //loop through each 
+                           for(i=0; i < divcount; i++){
+
+
+                            
+                            
+                           var thumbtitle = document.getElementById([i]).textContent;
+                           window.localStorage.setItem("thumbtitle" + [i], thumbtitle);
+                           var thumbimage = document.getElementById([i]).style.backgroundImage;
+                           window.localStorage.setItem("thumbimage" + [i], thumbimage);
+                           var thumblink = document.getElementById([i]).firstChild;
+                           window.localStorage.setItem("thumblink" + [i], thumblink);
+
+
+                           /* var thumbimage = document.getElementById([i]).style.backgroundImage.textContent
+                            window.localStorage.setItem("thumbimage" + [i], thumbimage);
+
+                           var thumblink = document.getElementById([i]).href.textContent
+
+                           console.log(thumblink);
+                           window.localStorage.setItem("thumblink" + [i], thumblink)*/
+                            
+                            
+                            
+                           
+                           
+                        }
+                       
+
+                });
+               
+
+    
 
                 //write first thumb
                 var creatediv = document.createElement("div");
-                creatediv.setAttribute("Id","thumb1");
+                creatediv.setAttribute("Id","thumb0");
                 creatediv.setAttribute("class", "results");
                 creatediv.setAttribute("draggable", "true");
                 creatediv.style.backgroundImage = "url(" + recipe1img +")";
-                creatediv.innerHTML = "<a target='blank' Id='link' href="+ recipe1link + ">" + recipe1 +"</a>";
+                creatediv.innerHTML = "<a target='blank' Id='link0' href="+ recipe1link + ">" + recipe1 +"</a>";
                 flex1.appendChild(creatediv);
 
                 //write first recipe 
@@ -193,13 +301,13 @@ function foodsearch(){
 
 
                   //recipe event listeners for first recipe 
-                    document.getElementById("thumb1").addEventListener("mouseover", function(){
+                    document.getElementById("thumb0").addEventListener("mouseover", function(){
                     document.getElementById("ingrlist1").style.visibility = "visible";
                     });
 
-                    document.getElementById("thumb1").addEventListener("mouseout", function(){
+                    document.getElementById("thumb0").addEventListener("mouseout", function(){
                        
-                        document.getElementById("ingrlist1").style.visibility = "hidden";
+                    document.getElementById("ingrlist1").style.visibility = "hidden";
                     
                     });
 
@@ -208,9 +316,9 @@ function foodsearch(){
                     document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
 
 
-                    document.getElementById("thumb1").addEventListener("dragstart", draghandler);
+                    document.getElementById("thumb0").addEventListener("dragstart", draghandler);
 
-                    document.addEventListener("drop", dropZone);
+                    document.getElementById("fav").addEventListener("drop", dropZone);
 
                    
                     
@@ -221,10 +329,11 @@ function foodsearch(){
     
                     //write second thumb
                     var creatediv2 = document.createElement("div");
-                    creatediv2.setAttribute("Id","thumb2");
+                    creatediv2.setAttribute("Id","thumb1");
                     creatediv2.setAttribute("class", "results");
+                    creatediv2.setAttribute("draggable", "true");
                     creatediv2.style.backgroundImage = "url(" + recipe2img +")";
-                    creatediv2.innerHTML = "<a target='blank' Id='link' href="+ recipe2link + ">" + recipe2 +"</a>";
+                    creatediv2.innerHTML = "<a target='blank' Id='link1' href="+ recipe2link + ">" + recipe2 +"</a>";
                     flex2.appendChild(creatediv2);
     
                     //write second recipe 
@@ -245,13 +354,16 @@ function foodsearch(){
                 document.getElementById("ingrlist2").style.visibility ="hidden"
 
                 //recipe event listeners for second recipe 
-                  document.getElementById("thumb2").addEventListener("mouseover", function(){
+                  document.getElementById("thumb1").addEventListener("mouseover", function(){
                   document.getElementById("ingrlist2").style.visibility = "visible";
                   });
 
-                  document.getElementById("thumb2").addEventListener("mouseout", function(){
+                  document.getElementById("thumb1").addEventListener("mouseout", function(){
                   document.getElementById("ingrlist2").style.visibility = "hidden";
                   });
+
+                  document.getElementById("thumb1").addEventListener("dragstart", draghandler);
+
 
 
                     //write third file 
@@ -407,11 +519,41 @@ function foodsearch(){
                });
        
        
+// loading our local storage
+function Load(){
+    //declare how many we had stored in the fav bar 
+    var getcount = window.localStorage.getItem("favcount")
+    
+    //run a loop to write a division plus all the content we have stored for each one 
+    for(i=0; i< getcount; i++){
+
+        //declarations 
+        var favbar = document.getElementById("fav");
+        var gettitle = window.localStorage.getItem("thumbtitle" +[i]);
+        var getimage = window.localStorage.getItem("thumbimage" + [i]);
+        var getlink = window.localStorage.getItem("thumblink" + [i]);
+
+        //write the division, and add all the attributes.
+        var loaddiv = document.createElement("div");
+        loaddiv.setAttribute ("id", [i]);
+        loaddiv.setAttribute("class", "results");
+        loaddiv.setAttribute("draggable", "true");
+        loaddiv.style.backgroundImage = getimage;
+
+        //add our link to the new created div
+        loaddiv.innerHTML = "<a target='blank' Id='link'" + " href=" + getlink + ">" + gettitle + "</a>";
        
-       //drop logic 
+
+        //append it to the bar. 
+        favbar.appendChild(loaddiv);
+      
+
+    }
+
+
+
+}   
        
-       
 
-
-
-
+// we want this to load the data on the page first 
+Load();

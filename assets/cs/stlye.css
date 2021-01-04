@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 :root{
     --Primarycolor: white;
     --secondarycolor: lightgreen;
@@ -15,7 +20,7 @@
 }
 
 .results{
-    margin-top: 10px;
+    margin-top: 0px;
     margin-right: 5px;;
     background-color: var(--secondarycolor);
     height: 125px;
@@ -30,7 +35,7 @@
 .fav{
     background-color: lightgrey;
     height: 500px;
-    width:150px;
+    width: 100%;
     
 }
 .link{
@@ -61,3 +66,32 @@
 
 
 
+.inputsection{
+    padding: 0; /*space between trash and fav list */
+   
+    
+}
+
+.savebutton{
+    height: 75px;
+    width: 100%;
+}
+
+
+.trash{
+    margin: 0;
+    max-height: 575px;
+    max-width: 125px;
+    background-color: red;
+    color: white;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trashtext{
+    
+    font-size: 50px;
+    writing-mode: vertical-lr;
+}
