@@ -32,10 +32,39 @@ function foodsearch(){
 
     }
 
+
+
+
+
     var searchbar = document.getElementById("searchbar")
     var search = searchbar.value;
     search = search.trim();
         
+    //Radio Button Logic 
+
+    var radiochoice1 = document.getElementById("alcohol");
+    var radiochoice2 = document.getElementById("lowsugar");
+    var radiochoice3 = document.getElementById("lowfat");
+    
+    //if calories is checked
+    var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e"
+
+    if(radiochoice1.checked){
+
+        var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&health=alcohol-free"
+        
+    }
+    
+    if(radiochoice2.checked){
+        var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&health=sugar-conscious"
+
+    }
+    
+    if(radiochoice3.checked){
+        var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&hdiet=low-fat"
+
+    }
+
 
         var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e"
 
@@ -159,7 +188,8 @@ function foodsearch(){
                 ev.dataTransfer.setData("text/plain", ev.target.innerText);
                 ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
                 ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
-                ev.dataTransfer.setData("div",ev.target.id)
+                ev.dataTransfer.setData("div",ev.target.id);
+                ev.dataTransfer.setData("class",ev.target.classList);
                }
 
                //change dropzone to another color while draging
@@ -188,15 +218,27 @@ function foodsearch(){
               }
 
               var dropZonetrash = function(event) {
+                var classcheck = event.dataTransfer.getData("class");
+                
                 var id = event.dataTransfer.getData("text/plain");
                     var outhtml = event.dataTransfer.getData("text/outhtml");
                     var inhtml = event.dataTransfer.getData("text/innerhtml");
                     var target = event.dataTransfer.getData("div")
                     document.getElementById("dump").style.backgroundColor ="red";
-
-                    document.getElementById(target).remove();
                     
-                
+
+                    console.log(classcheck);
+
+                    if(classcheck == "results"){
+                        document.getElementById(target).nextSibling.remove();
+                        document.getElementById(target).remove();
+                    }
+
+                    
+                    if(classcheck =="cankill"){
+                    document.getElementById(target).remove();
+                    }
+                    
 
               }
 
@@ -209,11 +251,16 @@ function foodsearch(){
                     document.getElementById("fav").style.backgroundColor ="lightgrey";
                     
 
+
+                    
+
                     //remove the targets recipe list when dropped
-                    document.getElementById(target).nextSibling.style.display = "none"; 
+                     document.getElementById(target).nextSibling.style.display = "none"; 
+                     document.getElementById(target).classList.add("cankill");
+                     document.getElementById(target).classList.remove("results");
 
 
-
+                    
 
                 //declarations to append. 
                    var El = document.getElementById(target);
@@ -279,45 +326,10 @@ function foodsearch(){
             
                 //local storage 
 
-                //save button
-                document.getElementById("greenbutton").addEventListener("click", function(){
-                     //get how many divs are in the fav
-                    var divcount = document.getElementById("fav").childElementCount;
-                    console.log(divcount);
-                    
-                        //save div count for later 
-                        window.localStorage.setItem("favcount", divcount);
-
-                        var fav =document.getElementById("fav");
-
-                          //loop through each 
-                           for(i=0; i < divcount; i++){
-
-
-                            
-                            
-                           var thumbtitle = document.getElementById([i]).textContent;
-                           window.localStorage.setItem("thumbtitle" + [i], thumbtitle);
-                           var thumbimage = document.getElementById([i]).style.backgroundImage;
-                           window.localStorage.setItem("thumbimage" + [i], thumbimage);
-                           var thumblink = document.getElementById([i]).firstChild;
-                           window.localStorage.setItem("thumblink" + [i], thumblink);
-
-
-                            
-                            
-                            
-                           
-                           
-                        }
-                       
-
-                });
-               
-
-    
 
                 //write first thumb
+
+
                 var creatediv = document.createElement("div");
                 creatediv.setAttribute("Id","thumb0");
                 creatediv.setAttribute("class", "results");
@@ -364,10 +376,7 @@ function foodsearch(){
 
                     document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
                     document.getElementById("dump").addEventListener("dragover", dropzoneDragTrash);
-
-                    
-
-
+             
                     document.getElementById("thumb0").addEventListener("dragstart", draghandler);
 
                     document.getElementById("fav").addEventListener("drop", dropZone);
@@ -375,7 +384,7 @@ function foodsearch(){
 
                    
                     
-                    //write second file
+                   //write second file
                     var flex2 = document.createElement("div");
                     flex2.setAttribute("class", "flex");
                     group.appendChild(flex2);
@@ -406,7 +415,7 @@ function foodsearch(){
 
                     }
 
-                    //make recipe2 invisible until hover
+                 //make recipe2 invisible until hover
                 document.getElementById("ingrlist2").style.visibility ="hidden"
 
                 //recipe event listeners for second recipe 
@@ -429,7 +438,8 @@ function foodsearch(){
     
                     //write third thumb
                     var creatediv3 = document.createElement("div");
-                    creatediv3.setAttribute("Id","thumb3");
+                    creatediv3.setAttribute("Id","thumb2");
+                    creatediv3.setAttribute("draggable", "true");
                     creatediv3.setAttribute("class", "results");
                     creatediv3.setAttribute("style", "width:300px");
                     creatediv3.setAttribute("style", "height:300px");
@@ -456,13 +466,16 @@ function foodsearch(){
                     document.getElementById("ingrlist3").style.visibility ="hidden"
 
                     //recipe event listeners for third recipe 
-                    document.getElementById("thumb3").addEventListener("mouseover", function(){
+                    document.getElementById("thumb2").addEventListener("mouseover", function(){
                     document.getElementById("ingrlist3").style.visibility = "visible";
                     });
 
-                    document.getElementById("thumb3").addEventListener("mouseout", function(){
-                    document.getElementById("ingrlist3").style.visibility = "hidden";
+                    document.getElementById("thumb2").addEventListener("mouseout", function(){
+                    document.getElementById("ingrlist3").style.visibility = "hidden"
                     });
+
+                    document.getElementById("thumb2").addEventListener("dragstart", draghandler);
+                    
 
 
                      //write Fourth file 
@@ -472,10 +485,11 @@ function foodsearch(){
      
                      //write Fourth thumb
                      var creatediv4 = document.createElement("div");
-                     creatediv4.setAttribute("Id","thumb4");
+                     creatediv4.setAttribute("Id","thumb3");
                      creatediv4.setAttribute("class", "results");
                      creatediv4.setAttribute("style", "width:300px");
                      creatediv4.setAttribute("style", "height:300px");
+                     creatediv4.setAttribute("draggable", "true");
                      creatediv4.style.backgroundImage = "url(" + recipe4img +")";
                      creatediv4.innerHTML = "<a target='blank' Id='link' href="+ recipe4link + ">" + recipe4 +"</a>";
                      flex4.appendChild(creatediv4);
@@ -499,13 +513,15 @@ function foodsearch(){
                      document.getElementById("ingrlist4").style.visibility ="hidden"
  
                      //recipe event listeners for fourth recipe 
-                     document.getElementById("thumb4").addEventListener("mouseover", function(){
+                     document.getElementById("thumb3").addEventListener("mouseover", function(){
                      document.getElementById("ingrlist4").style.visibility = "visible";
                      });
  
-                     document.getElementById("thumb4").addEventListener("mouseout", function(){
+                     document.getElementById("thumb3").addEventListener("mouseout", function(){
                      document.getElementById("ingrlist4").style.visibility = "hidden";
                      });
+
+                     document.getElementById("thumb3").addEventListener("dragstart", draghandler);
 
                      
                     //write fifth
@@ -515,10 +531,11 @@ function foodsearch(){
     
                     //write Fourth thumb
                     var creatediv5 = document.createElement("div");
-                    creatediv5.setAttribute("Id","thumb5");
+                    creatediv5.setAttribute("Id","thumb4");
                     creatediv5.setAttribute("class", "results");
                     creatediv5.setAttribute("style", "width:300px");
                     creatediv5.setAttribute("style", "height:300px");
+                    creatediv5.setAttribute("draggable", "true");
                     creatediv5.style.backgroundImage = "url(" + recipe5img +")";
                     creatediv5.innerHTML = "<a target='blank' Id='link' href="+ recipe5link + ">" + recipe5 +"</a>";
                     flex5.appendChild(creatediv5);
@@ -528,6 +545,7 @@ function foodsearch(){
                     ingrlist5.setAttribute("id", "ingrlist5");
                     ingrlist5.setAttribute("class", "ingr");
                     ingrlist5.setAttribute("style", "height:300px");
+                    ingrlist5.setAttribute("class", "ingr")
                     flex5.appendChild(ingrlist5);
     
                     //write ingr list 
@@ -542,13 +560,15 @@ function foodsearch(){
                     document.getElementById("ingrlist5").style.visibility ="hidden"
 
                     //recipe event listeners for fourth recipe 
-                    document.getElementById("thumb5").addEventListener("mouseover", function(){
+                    document.getElementById("thumb4").addEventListener("mouseover", function(){
                     document.getElementById("ingrlist5").style.visibility = "visible";
                     });
 
-                    document.getElementById("thumb5").addEventListener("mouseout", function(){
+                    document.getElementById("thumb4").addEventListener("mouseout", function(){
                     document.getElementById("ingrlist5").style.visibility = "hidden";
-                    });
+                    }); 
+
+                    document.getElementById("thumb4").addEventListener("dragstart", draghandler);
 
 
                     window.localStorage.setItem("searchyes", "true")
@@ -567,10 +587,10 @@ function foodsearch(){
            })
            .catch(function(error) {
 
-            document.getElementById("modaldiv").addClass("is-active");
-            document.getElementById("thedeal").textContent = "It looks like we are having trouble connecting you. You might want to try again later"
+            document.getElementById("modaldiv").classList.add("is-active");
+            document.getElementById("thedeal").textContent = "It looks like we are having trouble connecting you. You might need to try again later"
             document.getElementById("modal-off").addEventListener("click", function(){
-            document.getElementById("modaldiv").removeClass("is-active");
+            document.getElementById("modaldiv").classList.remove("is-active");
 
             });
                
@@ -584,6 +604,7 @@ function foodsearch(){
         ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
         ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
         ev.dataTransfer.setData("div",ev.target.id)
+        ev.dataTransfer.setData("class",ev.target.classList);
        }
 
        //change dropzone to another color while draging
@@ -612,6 +633,10 @@ function foodsearch(){
      }
 
      var dropZonetrash = function(event) {
+        
+        var classcheck = event.dataTransfer.getData("class")
+
+        if(classcheck == "cankill" ){
        var id = event.dataTransfer.getData("text/plain");
            var outhtml = event.dataTransfer.getData("text/outhtml");
            var inhtml = event.dataTransfer.getData("text/innerhtml");
@@ -619,6 +644,7 @@ function foodsearch(){
            document.getElementById("dump").style.backgroundColor ="red";
 
            document.getElementById(target).remove();
+            }
            
        
 
@@ -633,8 +659,7 @@ function foodsearch(){
            document.getElementById("fav").style.backgroundColor ="lightgrey";
            
            
-           //remove the targets recipe list when dropped
-           document.getElementById(target).nextSibling.style.display = "none"; 
+          
 
            }
 
@@ -656,7 +681,74 @@ function foodsearch(){
                 document.getElementById("dump").addEventListener("drop",dropZonetrash);
 
 
+//save logic 
 
+ //save button
+ document.getElementById("greenbutton").addEventListener("click", function(){
+    //get how many divs are in the fav
+   var divcount = document.getElementById("fav").childElementCount;
+   console.log(divcount);
+   
+       //save div count for later 
+       window.localStorage.setItem("favcount", divcount);
+
+       var fav =document.getElementById("fav");
+
+       //need to rewrite ids for loading
+
+       var divcount = document.getElementById("fav").childElementCount;
+       var vin =0
+
+           if(divcount == 2){
+           var firstchild = document.getElementById("fav").firstChild.id = vin
+           var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+
+           }
+           if(divcount == 3){
+           var firstchild = document.getElementById("fav").firstChild.id = vin
+           var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+           var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
+           }
+           if(divcount == 4){
+               var firstchild = document.getElementById("fav").firstChild.id = vin
+               var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+               var thirdchild= document.getElementById("1").nextElementSibling.id = vin +2;
+               var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3
+           }
+           if(divcount ==5){
+               var firstchild = document.getElementById("fav").firstChild.id = vin
+               var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+               var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
+               var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+               var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
+       }
+
+
+
+
+         //loop through each 
+          for(i=0; i < divcount; i++){
+
+
+           
+           
+          var thumbtitle = document.getElementById([i]).textContent;
+          window.localStorage.setItem("thumbtitle" + [i], thumbtitle);
+          var thumbimage = document.getElementById([i]).style.backgroundImage;
+          window.localStorage.setItem("thumbimage" + [i], thumbimage);
+          var thumblink = document.getElementById([i]).firstChild;
+          window.localStorage.setItem("thumblink" + [i], thumblink);
+
+
+           
+           
+           
+          
+          
+       }
+      
+
+});
 
 
        
@@ -677,7 +769,7 @@ function Load(){
         //write the division, and add all the attributes.
         var loaddiv = document.createElement("div");
         loaddiv.setAttribute ("id", [i]);
-        loaddiv.setAttribute("class", "results");
+        loaddiv.setAttribute("class", "cankill");
         loaddiv.setAttribute("draggable", "true");
         loaddiv.style.backgroundImage = getimage;
 
