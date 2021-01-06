@@ -79,7 +79,9 @@ function foodsearch(){
                     console.log(data)
 
 
-            if( data.count == 0 ){
+
+
+            if( data.count < 5 ){
                 document.getElementById("modaldiv").classList.add("is-active");
                 document.getElementById("modal-off").addEventListener("click", function(){
                 document.getElementById("modaldiv").classList.remove("is-active");
