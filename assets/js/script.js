@@ -76,7 +76,9 @@ function foodsearch(){
                     console.log(data)
 
 
-            if( data.count == 0 ){
+
+
+            if( data.count < 5 ){
                 document.getElementById("modaldiv").classList.add("is-active");
                 document.getElementById("modal-off").addEventListener("click", function(){
                 document.getElementById("modaldiv").classList.remove("is-active");
@@ -183,7 +185,7 @@ function foodsearch(){
                 flex1.setAttribute("class", "flex");
                 group.appendChild(flex1);
 
-               //write drag and drop
+             /*  //write drag and drop
                var draghandler = function(ev){
                 ev.dataTransfer.setData("text/plain", ev.target.innerText);
                 ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
@@ -310,7 +312,7 @@ function foodsearch(){
 
                     
 
-
+                    
                    
 
 
@@ -318,13 +320,8 @@ function foodsearch(){
                     
                 
                 }
-            }
+            } */
 
-
-
-            
-            
-                //local storage 
 
 
                 //write first thumb
@@ -337,6 +334,13 @@ function foodsearch(){
                 creatediv.style.backgroundImage = "url(" + recipe1img +")";
                 creatediv.innerHTML = "<a target='blank' Id='link0' href="+ recipe1link + ">" + recipe1 +"</a>";
                 flex1.appendChild(creatediv);
+
+                $("#thumb0").draggable({
+                    opacity: 0.5,
+                    revert: true,
+                    helper: "clone",
+                   
+                });
 
                 //write first recipe 
                 var ingrlist1 = document.createElement("div");
@@ -369,15 +373,7 @@ function foodsearch(){
                     
                     });
 
-                    //drag and drop handelers
-
-                    document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
-                    document.getElementById("dump").addEventListener("dragover", dropzoneDragTrash);
-             
-                    document.getElementById("thumb0").addEventListener("dragstart", draghandler);
-
-                    document.getElementById("fav").addEventListener("drop", dropZone);
-                    document.getElementById("dump").addEventListener("drop",dropZonetrash);
+                  
 
                    
                     
@@ -394,6 +390,13 @@ function foodsearch(){
                     creatediv2.style.backgroundImage = "url(" + recipe2img +")";
                     creatediv2.innerHTML = "<a target='blank' Id='link1' href="+ recipe2link + ">" + recipe2 +"</a>";
                     flex2.appendChild(creatediv2);
+
+                    $("#thumb1").draggable({
+                        opacity: 0.5,
+                        revert: true,
+                        helper: "clone",
+                       
+                    });
     
                     //write second recipe 
                     var ingrlist2 = document.createElement("div");
@@ -421,7 +424,7 @@ function foodsearch(){
                   document.getElementById("ingrlist2").style.visibility = "hidden";
                   });
 
-                  document.getElementById("thumb1").addEventListener("dragstart", draghandler);
+                 
 
 
 
@@ -444,6 +447,13 @@ function foodsearch(){
                     ingrlist3.setAttribute("id", "ingrlist3");
                     ingrlist3.setAttribute("class", "ingr")
                     flex3.appendChild(ingrlist3);
+
+                    $("#thumb2").draggable({
+                        opacity: 0.5,
+                        revert: true,
+                        helper: "clone",
+                       
+                    });
     
                     //write ingr list 
                     for( i=0; i < recipe3ingr.length; i++){
@@ -465,7 +475,7 @@ function foodsearch(){
                     document.getElementById("ingrlist3").style.visibility = "hidden"
                     });
 
-                    document.getElementById("thumb2").addEventListener("dragstart", draghandler);
+                    
                     
 
 
@@ -488,6 +498,13 @@ function foodsearch(){
                      ingrlist4.setAttribute("id", "ingrlist4");
                      ingrlist4.setAttribute("class", "ingr")
                      flex4.appendChild(ingrlist4);
+
+                     $("#thumb3").draggable({
+                        opacity: 0.5,
+                        revert: true,
+                        helper: "clone",
+                       
+                    });
      
                      //write ingr list 
                      for( i=0; i < recipe4ingr.length; i++) {
@@ -509,7 +526,7 @@ function foodsearch(){
                      document.getElementById("ingrlist4").style.visibility = "hidden";
                      });
 
-                     document.getElementById("thumb3").addEventListener("dragstart", draghandler);
+                     
 
                      
                     //write fifth
@@ -521,7 +538,6 @@ function foodsearch(){
                     var creatediv5 = document.createElement("div");
                     creatediv5.setAttribute("Id","thumb4");
                     creatediv5.setAttribute("class", "results");
-                    creatediv5.setAttribute("draggable", "true");
                     creatediv5.style.backgroundImage = "url(" + recipe5img +")";
                     creatediv5.innerHTML = "<a target='blank' Id='link' href="+ recipe5link + ">" + recipe5 +"</a>";
                     flex5.appendChild(creatediv5);
@@ -532,6 +548,13 @@ function foodsearch(){
                     ingrlist5.setAttribute("class", "ingr")
                     
                     flex5.appendChild(ingrlist5);
+
+                    $("#thumb4").draggable({
+                        opacity: 0.5,
+                        revert: true,
+                        helper: "clone",
+                       
+                    });
     
                     //write ingr list 
                     for( i=0; i < recipe4ingr.length; i++) {
@@ -553,7 +576,7 @@ function foodsearch(){
                     document.getElementById("ingrlist5").style.visibility = "hidden";
                     }); 
 
-                    document.getElementById("thumb4").addEventListener("dragstart", draghandler);
+                   
 
 
                     window.localStorage.setItem("searchyes", "true")
@@ -583,7 +606,7 @@ function foodsearch(){
        }
 
 
-       //write drag and drop
+     /*  //write drag and drop
        var draghandler = function(ev){
         ev.dataTransfer.setData("text/plain", ev.target.innerText);
         ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
@@ -651,7 +674,7 @@ function foodsearch(){
 
 
 
-
+*/
 
        //Event Listeners 
            //search button  listener 
@@ -660,10 +683,65 @@ function foodsearch(){
        
                });
        
-               document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
+              /* document.getElementById("fav").addEventListener("dragover", dropzoneDrag);
                document.getElementById("dump").addEventListener("dragover", dropzoneDragTrash);
                 document.getElementById("fav").addEventListener("drop", dropZone);
-                document.getElementById("dump").addEventListener("drop",dropZonetrash);
+                document.getElementById("dump").addEventListener("drop",dropZonetrash);  */
+
+//logic for fav dropzone
+
+$("#fav").droppable({
+    accept: ".results",
+    tolerance: "touch",
+    drop: function(event, ui){
+
+        
+        
+        var dropthat = $(ui.draggable).clone();
+
+        dropthat.addClass("cankill")
+        dropthat.removeClass("results")
+
+        $("#fav").append(dropthat);
+
+        //add event listener to be thrown away
+        $(dropthat).draggable({
+            opacity: 0.5,
+            revert: true
+            
+        })
+        
+        document.getElementById("fav").style.backgroundColor = "lightgrey"
+    },
+    over: function(event, ui){
+        document.getElementById("fav").style.backgroundColor = "var(--secondarycolor)"
+    },
+    out:function(event, ui){
+        document.getElementById("fav").style.backgroundColor = "lightgrey"
+    }
+
+})
+
+
+
+// Logic for Trashcan
+$("#dump").droppable({
+    accept: ".cankill",
+    tolerance: "touch",
+    drop: function(event, ui){
+        ui.draggable.remove();
+        document.getElementById("dump").style.backgroundColor = "red"
+    },
+    over: function(event, ui){
+        document.getElementById("dump").style.backgroundColor = "blue"
+    },
+    out:function(event, ui){
+        document.getElementById("dump").style.backgroundColor = "red"
+    }
+
+
+})
+
 
 
 //save logic 
@@ -755,21 +833,22 @@ function Load(){
         var loaddiv = document.createElement("div");
         loaddiv.setAttribute ("id", [i]);
         loaddiv.setAttribute("class", "cankill");
-        loaddiv.setAttribute("draggable", "true");
+        //loaddiv.setAttribute("draggable", "true");
         loaddiv.style.backgroundImage = getimage;
 
         //add our link to the new created div
         loaddiv.innerHTML = "<a target='blank' Id='link'" + " href=" + getlink + ">" + gettitle + "</a>";
        
-        //add eventlistener
-        loaddiv.addEventListener("dragstart", draghandler);
-
-
-
 
         //append it to the bar. 
         favbar.appendChild(loaddiv);
-      
+
+      //add eventlistener
+        $("#" + [i]).draggable({
+            opacity: 0.5,
+            revert: true
+            
+        })
 
     }
 
