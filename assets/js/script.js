@@ -32,12 +32,31 @@ function foodsearch(){
 
     }
 
+
+
+
+
     var searchbar = document.getElementById("searchbar")
     var search = searchbar.value;
     search = search.trim();
         
+    //Radio Button Logic 
+
+    var radiochoice1 = document.getElementById("calories");
+    
+    //if calories is checked
+    if(radiochoice1.checked){
+
+        var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&health=alcohol-free"
+        
+    }else{
 
         var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e"
+
+    }
+
+
+
         fetch(apiUrl).then (function(response){
             if (response.ok) {
 
@@ -536,8 +555,8 @@ function foodsearch(){
            })
            .catch(function(error) {
 
-            document.getElementById("modaldiv").addClass("is-active");
-            document.getElementById("thedeal").textContent = "It looks like we are having trouble connecting you. You might want to try again later"
+            document.getElementById("modaldiv").classList.add("is-active");
+            document.getElementById("thedeal").textContent = "It looks like we are having trouble connecting you. You might need to try again later"
             document.getElementById("modal-off").addEventListener("click", function(){
             document.getElementById("modaldiv").removeClass("is-active");
 
