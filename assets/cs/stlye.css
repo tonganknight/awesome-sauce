@@ -24,8 +24,8 @@
     margin-right: 5px;;
     background-color: var(--secondarycolor);
     background-size: cover;
-    height: 100px;
-    width: 100%;
+    height: 300px;
+    width: 300px;
     border-radius: 17px;
 }
 
@@ -51,21 +51,17 @@
     font-weight: bold;
     margin-top: 25px;
     margin-left: 15px;
-    height: 100px;
-    width: 100%;
+    height: 300px;
     overflow: scroll;
-
+    background-color: var(--secondarycolor);
 }
 
 .flex{
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: flex-start;
     margin: 0;
-
-
-
+}
 
 .inputsection{
     padding: 0; /*space between trash and fav list */
