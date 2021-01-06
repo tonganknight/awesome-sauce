@@ -23,8 +23,9 @@
     margin-top: 0px;
     margin-right: 5px;;
     background-color: var(--secondarycolor);
-    height: 125px;
-    width: 100%;
+    background-size: cover;
+    height: 300px;
+    width: 300px;
     border-radius: 17px;
 }
 
@@ -50,8 +51,7 @@
     font-weight: bold;
     margin-top: 25px;
     margin-left: 15px;
-    height: 100px;
-    width: 100%;
+    height: 300px;
     overflow: scroll;
     background-color: var(--secondarycolor);
 }
@@ -59,8 +59,7 @@
 .flex{
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: flex-start;
     margin: 0;
 }
 
@@ -105,4 +104,22 @@
     
     font-size: 50px;
     writing-mode: vertical-lr;
+}
+
+
+/* this class is the results class exactly for display. Its used as a class for drop zone targeting*/
+.cankill{
+        margin-top: 0px;
+        margin-right: 5px;;
+        background-color: var(--secondarycolor);
+        background-size: cover;
+        height: 125px;
+        width: 100%;
+        border-radius: 17px;
+    
+}
+
+.radio{
+    margin-bottom: 5px;
+    margin-left:15px;
 }
