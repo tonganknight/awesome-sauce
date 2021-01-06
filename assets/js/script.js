@@ -279,43 +279,6 @@ function foodsearch(){
             
                 //local storage 
 
-                //save button
-                document.getElementById("greenbutton").addEventListener("click", function(){
-                     //get how many divs are in the fav
-                    var divcount = document.getElementById("fav").childElementCount;
-                    console.log(divcount);
-                    
-                        //save div count for later 
-                        window.localStorage.setItem("favcount", divcount);
-
-                        var fav =document.getElementById("fav");
-
-                          //loop through each 
-                           for(i=0; i < divcount; i++){
-
-
-                            
-                            
-                           var thumbtitle = document.getElementById([i]).textContent;
-                           window.localStorage.setItem("thumbtitle" + [i], thumbtitle);
-                           var thumbimage = document.getElementById([i]).style.backgroundImage;
-                           window.localStorage.setItem("thumbimage" + [i], thumbimage);
-                           var thumblink = document.getElementById([i]).firstChild;
-                           window.localStorage.setItem("thumblink" + [i], thumblink);
-
-
-                            
-                            
-                            
-                           
-                           
-                        }
-                       
-
-                });
-               
-
-    
 
                 //write first thumb
                 var creatediv = document.createElement("div");
@@ -641,7 +604,74 @@ function foodsearch(){
                 document.getElementById("dump").addEventListener("drop",dropZonetrash);
 
 
+//save logic 
 
+ //save button
+ document.getElementById("greenbutton").addEventListener("click", function(){
+    //get how many divs are in the fav
+   var divcount = document.getElementById("fav").childElementCount;
+   console.log(divcount);
+   
+       //save div count for later 
+       window.localStorage.setItem("favcount", divcount);
+
+       var fav =document.getElementById("fav");
+
+       //need to rewrite ids for loading
+
+       var divcount = document.getElementById("fav").childElementCount;
+       var vin =0
+
+           if(divcount == 2){
+           var firstchild = document.getElementById("fav").firstChild.id = vin
+           var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+
+           }
+           if(divcount == 3){
+           var firstchild = document.getElementById("fav").firstChild.id = vin
+           var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+           var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
+           }
+           if(divcount == 4){
+               var firstchild = document.getElementById("fav").firstChild.id = vin
+               var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+               var thirdchild= document.getElementById("1").nextElementSibling.id = vin +2;
+               var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3
+           }
+           if(divcount ==5){
+               var firstchild = document.getElementById("fav").firstChild.id = vin
+               var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+               var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
+               var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+               var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
+       }
+
+
+
+
+         //loop through each 
+          for(i=0; i < divcount; i++){
+
+
+           
+           
+          var thumbtitle = document.getElementById([i]).textContent;
+          window.localStorage.setItem("thumbtitle" + [i], thumbtitle);
+          var thumbimage = document.getElementById([i]).style.backgroundImage;
+          window.localStorage.setItem("thumbimage" + [i], thumbimage);
+          var thumblink = document.getElementById([i]).firstChild;
+          window.localStorage.setItem("thumblink" + [i], thumblink);
+
+
+           
+           
+           
+          
+          
+       }
+      
+
+});
 
 
        
