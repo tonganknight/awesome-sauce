@@ -42,18 +42,33 @@ function foodsearch(){
         
     //Radio Button Logic 
 
-    var radiochoice1 = document.getElementById("calories");
+    var radiochoice1 = document.getElementById("alcohol");
+    var radiochoice2 = document.getElementById("lowsugar");
+    var radiochoice3 = document.getElementById("lowfat");
     
     //if calories is checked
+    var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e"
+
     if(radiochoice1.checked){
 
         var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&health=alcohol-free"
         
-    }else{
-
-        var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e"
+    }
+    
+    if(radiochoice2.checked){
+        var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&health=sugar-conscious"
 
     }
+    
+    if(radiochoice3.checked){
+        var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&hdiet=low-fat"
+
+    }
+
+
+        
+
+    
 
 
 
@@ -558,7 +573,7 @@ function foodsearch(){
             document.getElementById("modaldiv").classList.add("is-active");
             document.getElementById("thedeal").textContent = "It looks like we are having trouble connecting you. You might need to try again later"
             document.getElementById("modal-off").addEventListener("click", function(){
-            document.getElementById("modaldiv").removeClass("is-active");
+            document.getElementById("modaldiv").classList.remove("is-active");
 
             });
                
