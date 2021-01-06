@@ -108,3 +108,15 @@
     font-size: 50px;
     writing-mode: vertical-lr;
 }
+
+
+/* this class is the results class exactly for display. Its used as a class for drop zone targeting*/
+.cankill{
+        margin-top: 0px;
+        margin-right: 5px;;
+        background-color: var(--secondarycolor);
+        height: 125px;
+        width: 100%;
+        border-radius: 17px;
+    
+}

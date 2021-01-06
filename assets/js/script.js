@@ -159,7 +159,8 @@ function foodsearch(){
                 ev.dataTransfer.setData("text/plain", ev.target.innerText);
                 ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
                 ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
-                ev.dataTransfer.setData("div",ev.target.id)
+                ev.dataTransfer.setData("div",ev.target.id);
+                ev.dataTransfer.setData("class",ev.target.classList);
                }
 
                //change dropzone to another color while draging
@@ -188,15 +189,27 @@ function foodsearch(){
               }
 
               var dropZonetrash = function(event) {
+                var classcheck = event.dataTransfer.getData("class");
+                
                 var id = event.dataTransfer.getData("text/plain");
                     var outhtml = event.dataTransfer.getData("text/outhtml");
                     var inhtml = event.dataTransfer.getData("text/innerhtml");
                     var target = event.dataTransfer.getData("div")
                     document.getElementById("dump").style.backgroundColor ="red";
-
-                    document.getElementById(target).remove();
                     
-                
+
+                    console.log(classcheck);
+
+                    if(classcheck == "results"){
+                        document.getElementById(target).nextSibling.remove();
+                        document.getElementById(target).remove();
+                    }
+
+                    
+                    if(classcheck =="cankill"){
+                    document.getElementById(target).remove();
+                    }
+                    
 
               }
 
@@ -209,11 +222,16 @@ function foodsearch(){
                     document.getElementById("fav").style.backgroundColor ="lightgrey";
                     
 
+
+                    
+
                     //remove the targets recipe list when dropped
-                    document.getElementById(target).nextSibling.style.display = "none"; 
+                     document.getElementById(target).nextSibling.style.display = "none"; 
+                     document.getElementById(target).classList.add("cankill");
+                     document.getElementById(target).classList.remove("results");
 
 
-
+                    
 
                 //declarations to append. 
                    var El = document.getElementById(target);
@@ -542,6 +560,7 @@ function foodsearch(){
         ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
         ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
         ev.dataTransfer.setData("div",ev.target.id)
+        ev.dataTransfer.setData("class",ev.target.classList);
        }
 
        //change dropzone to another color while draging
@@ -570,6 +589,10 @@ function foodsearch(){
      }
 
      var dropZonetrash = function(event) {
+        
+        var classcheck = event.dataTransfer.getData("class")
+
+        if(classcheck == "cankill" ){
        var id = event.dataTransfer.getData("text/plain");
            var outhtml = event.dataTransfer.getData("text/outhtml");
            var inhtml = event.dataTransfer.getData("text/innerhtml");
@@ -577,6 +600,7 @@ function foodsearch(){
            document.getElementById("dump").style.backgroundColor ="red";
 
            document.getElementById(target).remove();
+            }
            
        
 
@@ -701,7 +725,7 @@ function Load(){
         //write the division, and add all the attributes.
         var loaddiv = document.createElement("div");
         loaddiv.setAttribute ("id", [i]);
-        loaddiv.setAttribute("class", "results");
+        loaddiv.setAttribute("class", "cankill");
         loaddiv.setAttribute("draggable", "true");
         loaddiv.style.backgroundImage = getimage;
 
