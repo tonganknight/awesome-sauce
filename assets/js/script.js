@@ -322,6 +322,8 @@ function foodsearch(){
                 creatediv.setAttribute("Id","thumb0");
                 creatediv.setAttribute("class", "results");
                 creatediv.setAttribute("draggable", "true");
+                creatediv.setAttribute("style", "width:300px");
+                creatediv.setAttribute("style", "height:300px");
                 creatediv.style.backgroundImage = "url(" + recipe1img +")";
                 creatediv.innerHTML = "<a target='blank' Id='link0' href="+ recipe1link + ">" + recipe1 +"</a>";
                 flex1.appendChild(creatediv);
@@ -329,7 +331,8 @@ function foodsearch(){
                 //write first recipe 
                 var ingrlist1 = document.createElement("div");
                 ingrlist1.setAttribute("id", "ingrlist1");
-                ingrlist1.setAttribute("class", "ingr")
+                ingrlist1.setAttribute("class", "ingr");
+                ingrlist1.setAttribute("style", "height:300px");
                 flex1.appendChild(ingrlist1);
 
                 //write ingr list 
@@ -382,6 +385,8 @@ function foodsearch(){
                     creatediv2.setAttribute("Id","thumb1");
                     creatediv2.setAttribute("class", "results");
                     creatediv2.setAttribute("draggable", "true");
+                    creatediv2.setAttribute("style", "width:300px");
+                    creatediv2.setAttribute("style", "height:300px");
                     creatediv2.style.backgroundImage = "url(" + recipe2img +")";
                     creatediv2.innerHTML = "<a target='blank' Id='link1' href="+ recipe2link + ">" + recipe2 +"</a>";
                     flex2.appendChild(creatediv2);
@@ -390,6 +395,7 @@ function foodsearch(){
                     var ingrlist2 = document.createElement("div");
                     ingrlist2.setAttribute("id", "ingrlist2");
                     ingrlist2.setAttribute("class", "ingr")
+                    ingrlist2.setAttribute("style", "height:300px");
                     flex2.appendChild(ingrlist2);
     
                     //write ingr list 
@@ -425,6 +431,8 @@ function foodsearch(){
                     var creatediv3 = document.createElement("div");
                     creatediv3.setAttribute("Id","thumb3");
                     creatediv3.setAttribute("class", "results");
+                    creatediv3.setAttribute("style", "width:300px");
+                    creatediv3.setAttribute("style", "height:300px");
                     creatediv3.style.backgroundImage = "url(" + recipe3img +")";
                     creatediv3.innerHTML = "<a target='blank' Id='link' href="+ recipe3link + ">" + recipe3 +"</a>";
                     flex3.appendChild(creatediv3);
@@ -432,7 +440,8 @@ function foodsearch(){
                     //write third recipe 
                     var ingrlist3 = document.createElement("div");
                     ingrlist3.setAttribute("id", "ingrlist3");
-                    ingrlist3.setAttribute("class", "ingr")
+                    ingrlist3.setAttribute("class", "ingr");
+                    ingrlist3.setAttribute("style", "height:300px");
                     flex3.appendChild(ingrlist3);
     
                     //write ingr list 
@@ -465,6 +474,8 @@ function foodsearch(){
                      var creatediv4 = document.createElement("div");
                      creatediv4.setAttribute("Id","thumb4");
                      creatediv4.setAttribute("class", "results");
+                     creatediv4.setAttribute("style", "width:300px");
+                     creatediv4.setAttribute("style", "height:300px");
                      creatediv4.style.backgroundImage = "url(" + recipe4img +")";
                      creatediv4.innerHTML = "<a target='blank' Id='link' href="+ recipe4link + ">" + recipe4 +"</a>";
                      flex4.appendChild(creatediv4);
@@ -472,7 +483,8 @@ function foodsearch(){
                      //write fourth recipe 
                      var ingrlist4 = document.createElement("div");
                      ingrlist4.setAttribute("id", "ingrlist4");
-                     ingrlist4.setAttribute("class", "ingr")
+                     ingrlist4.setAttribute("class", "ingr");
+                     ingrlist4.setAttribute("style", "height:300px");
                      flex4.appendChild(ingrlist4);
      
                      //write ingr list 
@@ -505,6 +517,8 @@ function foodsearch(){
                     var creatediv5 = document.createElement("div");
                     creatediv5.setAttribute("Id","thumb5");
                     creatediv5.setAttribute("class", "results");
+                    creatediv5.setAttribute("style", "width:300px");
+                    creatediv5.setAttribute("style", "height:300px");
                     creatediv5.style.backgroundImage = "url(" + recipe5img +")";
                     creatediv5.innerHTML = "<a target='blank' Id='link' href="+ recipe5link + ">" + recipe5 +"</a>";
                     flex5.appendChild(creatediv5);
@@ -512,7 +526,8 @@ function foodsearch(){
                     //write Fifth recipe 
                     var ingrlist5 = document.createElement("div");
                     ingrlist5.setAttribute("id", "ingrlist5");
-                    ingrlist5.setAttribute("class", "ingr")
+                    ingrlist5.setAttribute("class", "ingr");
+                    ingrlist5.setAttribute("style", "height:300px");
                     flex5.appendChild(ingrlist5);
     
                     //write ingr list 
