@@ -3,12 +3,20 @@
     padding: 0;
 }
 
+a{
+    font-size: 15px;
+    color: rgba(6, 245, 6, 0.658);
+    font-weight: bold;
+    background: whitesmoke;
+}
+
 :root{
     --Primarycolor: white;
     --secondarycolor: lightgreen;
 }
 .searchbar{
-    width: 60%;
+    margin-left: 10px;
+    width: 70%;
 }
 
 .ui{
@@ -19,15 +27,22 @@
 
 }
 
+.banner{
+    text-align: center;
+    color: rgba(6, 245, 6, 0.658);
+    font-size: 50px;
+}
+
 .results{
     margin-top: 0px;
     margin-right: 5px;;
     background-color: var(--secondarycolor);
     background-size: cover;
     height: 100px;
-    width: 100%;
+    width: 150px;
     border-radius: 17px;
 }
+
 
 .a.results{
     margin-left:15px;
@@ -35,21 +50,19 @@
 
 .fav{
     background-color: lightgrey;
-    height: 500px;
+    height: 700px;
     width: 100%;
     
 }
 .link{
     text-decoration: none; /*this targets the link that is created in the javascript. this id only exists once some one searches something*/
-    background-color: white;
-    color: black;
+   
 }
 
 .ingr{
     display: inline-block;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
-    margin-top: 25px;
     margin-left: 15px;
     height: 100px;
     width: 100%;
@@ -76,19 +89,24 @@
 .savebutton{
     height: 75px;
     width: 100%;
+    margin-top: 13px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
 }
 
 
 .trash{
     margin: 0;
-    max-height: 575px;
-    max-width: 125px;
+    margin-top: 13px;
+    max-height: 773px;
+    max-width: 90px;
     background-color: red;
     color: white;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Anton', sans-serif;
 }
 
 .trashopen{
@@ -119,11 +137,127 @@
         background-size: cover;
         height: 125px;
         width: 100%;
-        border-radius: 17px;
+        
     
 }
 
 .radio{
     margin-bottom: 5px;
     margin-left:15px;
+    color: var(--secondarycolor);
+    font-weight: bold;
+}
+
+
+/* Media Queries*/
+@media only screen and (max-width: 1880px ) {
+    
+    .results{
+        height: 250px;
+        width: 500px;
+    }
+
+    a{
+        font-size: 20px;  
+    }
+
+    .fav{
+        height: 800px;
+    }
+
+    .ingr{
+        font-size: 20px
+    }
+
+    .trash{
+        max-height: 875px;
+    }
+
+};
+
+@media only screen and (max-width: 1200px ) {
+
+    .ingr{
+        font-size: 25px;
+    }
+
+   
+}
+
+@media only screen and (max-width: 980px ) {
+
+    .results{
+        height: 150px;
+        width: 500px;
+    }
+
+    a{
+        font-size: 25px;  
+    }
+
+    .ingr{
+        font-size: 15px
+    }
+
+    .fav{
+        width: 500px;
+
+    }
+
+    .trash{
+        max-height: 875px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 875px ) {
+
+    .results{
+        margin-top: 0px;
+        margin-right: 5px;;
+        background-color: var(--secondarycolor);
+        background-size: cover;
+        height: 100px;
+        width: 150px;
+        border-radius: 17px;
+    }
+
+    .fav{
+        background-color: lightgrey;
+        height: 570px;
+        width: 100%; 
+    }
+
+    .cankill{
+        margin-top: 0px;
+        margin-right: 5px;;
+        background-color: var(--secondarycolor);
+        background-size: cover;
+        height: 125px;
+        width: 100%;
+
+    }
+
+    a{
+        font-size: 15px;
+        color: rgba(6, 245, 6, 0.658);
+        font-weight: bold;
+        background: whitesmoke;
+    }
+
+    
+    .ingr{
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 15px;
+    height: 100px;
+    width: 100%;
+    overflow: scroll;
+
+    }
+
+
 }

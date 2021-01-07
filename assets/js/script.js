@@ -185,144 +185,6 @@ function foodsearch(){
                 flex1.setAttribute("class", "flex");
                 group.appendChild(flex1);
 
-             /*  //write drag and drop
-               var draghandler = function(ev){
-                ev.dataTransfer.setData("text/plain", ev.target.innerText);
-                ev.dataTransfer.setData("text/outhtml", ev.target.outerHTML);
-                ev.dataTransfer.setData("text/innerhtml", ev.target.inHTML);
-                ev.dataTransfer.setData("div",ev.target.id);
-                ev.dataTransfer.setData("class",ev.target.classList);
-               }
-
-               //change dropzone to another color while draging
-            var dropzoneDrag = function(event){
-
-                 var zone = event.target.closest(".fav");
-
-                 if(zone){
-                     zone.style.backgroundColor ="var(--secondarycolor)";
-
-                     event.preventDefault();
-                 }
-
-               }
-
-               var dropzoneDragTrash = function(event){
-
-                var zone = event.target.closest("#dump");
-
-                if(zone){
-                    zone.style.backgroundColor ="blue";
-
-                    event.preventDefault();
-                }
-
-              }
-
-              var dropZonetrash = function(event) {
-                var classcheck = event.dataTransfer.getData("class");
-                
-                var id = event.dataTransfer.getData("text/plain");
-                    var outhtml = event.dataTransfer.getData("text/outhtml");
-                    var inhtml = event.dataTransfer.getData("text/innerhtml");
-                    var target = event.dataTransfer.getData("div")
-                    document.getElementById("dump").style.backgroundColor ="red";
-                    
-
-                    console.log(classcheck);
-
-                    if(classcheck == "results"){
-                        document.getElementById(target).nextSibling.remove();
-                        document.getElementById(target).remove();
-                    }
-
-                    
-                    if(classcheck =="cankill"){
-                    document.getElementById(target).remove();
-                    }
-                    
-
-              }
-
-
-                    var dropZone = function(event) {
-                    var id = event.dataTransfer.getData("text/plain");
-                    var outhtml = event.dataTransfer.getData("text/outhtml");
-                    var inhtml = event.dataTransfer.getData("text/innerhtml");
-                    var target = event.dataTransfer.getData("div")
-                    document.getElementById("fav").style.backgroundColor ="lightgrey";
-                    
-
-
-                    
-
-                    //remove the targets recipe list when dropped
-                     document.getElementById(target).nextSibling.style.display = "none"; 
-                     document.getElementById(target).classList.add("cankill");
-                     document.getElementById(target).classList.remove("results");
-
-
-                    
-
-                //declarations to append. 
-                   var El = document.getElementById(target);
-                   var zone = document.getElementById("fav");
-
-                //appending 
-                   zone.appendChild(El);
-
-
-                   var divcount = document.getElementById("fav").childElementCount;
-               
-                console.log("divcount" + divcount)
-
-
-
-                   // this is a set of if statments are in the fav when an element is dropped. It assigns a numerical value for the id for the id 
-                    if(divcount <= 1){
-                        var tek =document.getElementById(target).id = 0
-                    }else{
-                        
-                        var divcount = document.getElementById("fav").childElementCount;
-                        var vin =0
-
-                            if(divcount == 2){
-                            var firstchild = document.getElementById("fav").firstChild.id = vin
-                            var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
-
-                            }
-                            if(divcount == 3){
-                            var firstchild = document.getElementById("fav").firstChild.id = vin
-                            var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
-                            var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
-                            }
-                            if(divcount == 4){
-                                var firstchild = document.getElementById("fav").firstChild.id = vin
-                                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
-                                var thirdchild= document.getElementById("1").nextElementSibling.id = vin +2;
-                                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3
-                            }
-                            if(divcount ==5){
-                                var firstchild = document.getElementById("fav").firstChild.id = vin
-                                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
-                                var secondchild = document.getElementById("1").nextElementSibling.id = vin +2;
-                                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
-                                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
-                        }
-
-                    
-
-                    
-                   
-
-
-                   
-                    
-                
-                }
-            } */
-
-
 
                 //write first thumb
 
@@ -339,6 +201,8 @@ function foodsearch(){
                     opacity: 0.5,
                     revert: true,
                     helper: "clone",
+                  
+                
                    
                 });
 
