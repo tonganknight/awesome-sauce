@@ -481,9 +481,7 @@ $("#fav").droppable({
     accept: ".results",
     tolerance: "touch",
     drop: function(event, ui){
-
-        
-        
+   
         var dropthat = $(ui.draggable).clone();
 
         dropthat.addClass("cankill")
@@ -497,6 +495,8 @@ $("#fav").droppable({
             revert: true
             
         })
+
+        
         
         document.getElementById("fav").style.backgroundColor = "lightgrey"
     },
@@ -536,11 +536,8 @@ $("#dump").droppable({
  //save button
  document.getElementById("greenbutton").addEventListener("click", function(){
     //get how many divs are in the fav
-   var divcount = document.getElementById("fav").childElementCount;
-   console.log(divcount);
    
-       //save div count for later 
-       window.localStorage.setItem("favcount", divcount);
+       
 
        var fav =document.getElementById("fav");
 
@@ -549,37 +546,40 @@ $("#dump").droppable({
        var divcount = document.getElementById("fav").childElementCount;
        var vin = 0
 
-         
-            if(divcount == 1){
-                document.getElementById("fav").firstChild.id = vin;
-            }
+    //save div count for later 
+       window.localStorage.setItem("favcount", divcount);
+       
+       if(divcount == 1){
+        var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
+          
+       }
+       
 
            if(divcount == 2){
-           var firstchild = document.getElementById("fav").firstChild.id = vin;
+            var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
            var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
 
            }
            if(divcount == 3){
-           var firstchild = document.getElementById("fav").firstChild.id = vin
+            var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
            var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
            var thirdchild = document.getElementById("1").nextElementSibling.id = vin +2;
            }
            if(divcount == 4){
-               var firstchild = document.getElementById("fav").firstChild.id = vin
+            var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
                var thirdchild= document.getElementById("1").nextElementSibling.id = vin +2;
                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3
            }
            if(divcount ==5){
-               var firstchild = document.getElementById("fav").firstChild.id = vin
+            var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
                var thirdchild = document.getElementById("1").nextElementSibling.id = vin +2;
                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
        }
 
-       var thumbtitle = document.getElementById( "0").textContent;
-       console.log(thumbtitle);
+       
 
 
          //loop through each 
@@ -588,7 +588,7 @@ $("#dump").droppable({
 
            
            
-          var thumbtitle = document.getElementById([i]).textContent;
+          var thumbtitle = document.getElementById("" +[i]).textContent;
           window.localStorage.setItem("thumbtitle" + [i], thumbtitle);
           var thumbimage = document.getElementById([i]).style.backgroundImage;
           window.localStorage.setItem("thumbimage" + [i], thumbimage);
@@ -605,7 +605,7 @@ $("#dump").droppable({
 // loading our local storage
 function Load(){
     //declare how many we had stored in the fav bar 
-    var getcount = window.localStorage.getItem("favcount")
+    var getcount = window.localStorage.getItem("favcount");
     
     //run a loop to write a division plus all the content we have stored for each one 
     for(i=0; i< getcount; i++){
@@ -635,7 +635,7 @@ function Load(){
             opacity: 0.5,
             revert: true
             
-        })
+        });
 
     }
 
