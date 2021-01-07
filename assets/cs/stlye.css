@@ -29,6 +29,12 @@
     border-radius: 17px;
 }
 
+a {
+    padding: 5px;
+    background: var(--secondarycolor);
+    border-radius: inherit;
+}
+
 .a.results{
     margin-left:15px;
 }
@@ -123,3 +129,7 @@
     margin-bottom: 5px;
     margin-left:15px;
 }
+
+/* @media screen and (max-width: 760px) {
+    #dump {display: block;}
+} */

@@ -98,6 +98,8 @@ function foodsearch(){
             
                     //link for recipe 
                 var recipe1link = data.hits[0].recipe.url;
+            
+               
                   
 
 
