@@ -10,6 +10,7 @@ a{
     background: whitesmoke;
     padding-top: 10px;
     border-radius: inherit;
+    padding: 10px;
 }
 
 :root{
@@ -43,6 +44,7 @@ a{
     height: 300px;
     width: 300px;
     border-radius: 17px;
+    margin-top: 10px;
 }
 
 
