@@ -259,3 +259,28 @@ a{
 
 
 }
+
+@media only screen and (max-width: 520px ) {
+
+    .trash{
+        max-width: 75px;
+        
+    }
+
+    .savebutton{
+        margin-left: 0px;
+
+    }
+
+    .searchbar{
+        width:100%;
+    }
+
+    .start{
+        width: 100%;
+        height: 35px;
+        margin-left: 10px;
+        margin-right: 0px;
+    }
+
+}
