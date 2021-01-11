@@ -8,9 +8,6 @@ a{
     color: rgba(6, 245, 6, 0.658);
     font-weight: bold;
     background: whitesmoke;
-    padding-top: 10px;
-    border-radius: inherit;
-    padding: 10px;
 }
 
 :root{
@@ -38,7 +35,7 @@ a{
 
 .results{
     margin-top: 0px;
-    margin-right: 5px;;
+    margin-right: 5px;
     background-color: var(--secondarycolor);
     background-size: cover;
     height: 300px;
@@ -47,9 +44,11 @@ a{
     margin-top: 10px;
 }
 
-
-.a.results{
+.results a{
     margin-left:15px;
+    border-radius: inherit;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .fav{
@@ -109,6 +108,7 @@ a{
     justify-content: center;
     align-items: center;
     font-family: 'Anton', sans-serif;
+    
 }
 
 .trashopen{
@@ -303,7 +303,6 @@ a{
     }
 
     .inputsection{
-
         max-width: 100px;
     }
 
