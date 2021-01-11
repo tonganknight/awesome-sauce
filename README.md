@@ -1,1 +1,10 @@
-# awesome-sauce
+Leftovers
+
+Contributors are Malachi Alusa, Steven Baty, and Allec Ortega
+
+This project, we wanted to take the simple idea of using left over ingredients you have in your fridge and look up a delicious recipe that you could make. We are using Edamam as our api. Edamam uses multiple api to gather the information we are presenting to the user. After the user types in the ingredients they have, they are presented up to 5 recipes using those ingredients. The user will see a thumbnail of an image of how the recipe will look when finished. The user will also see the name of the recipe at the top left which may be clicked. The user on desktop could hover over the recipe and an ingredient list would appear. On mobile the user will click the thumbnail to see the ingredient list. The user may also click on the name, that will be send them to the website that has that recipe in a new window. The user can learn more information and instructions of how to cook that recipe. If the user is happy with a recipe they can drag and drop that recipe into our favorite list on the right of the screen and click the save button. This will save the recipe to the user's local storage for later use. The user can also drag the recipe to the delete section which will delete the recipe from the favorite list.
+
+For the drag and drop we used jquery.ui.touch-punch. When the recipe is dropped into the favorites sections, the id's are rewritten to prevent any errors from occuring. 
+If for what ever reason, there are no recipe's or an error with spelling, we have a modal that will pop up with a cute penguin who is cooking letting the user know.
+We used Bulma for our css. Bulma was easy to work with and uses columns for their css. We ran into an issue where we couldn't flex our a div to another row. We wanted to do this for visual appeal for the user on mobile.
+We also added 3 radio buttons the user can select when looking up recipe's. Those were alcohol free, low sugar, and low fat. This would help populate recipe's to the user that matches their needs. 
