@@ -1,5 +1,5 @@
 //this solves the drag function needed to refresh the first time. This will reload the page once it is opened, but only once 
-function refreshpage() {
+function refreshPage() {
    
     var currentDocumentTimestamp = new Date(performance.timing.domLoading).getTime();
     
@@ -12,7 +12,7 @@ function refreshpage() {
     location.reload();
     } else {}
     }
-    refreshpage();
+    refreshPage();
 
 
 // search logic check. this shows that the search bar has not been clocked yet 
@@ -21,7 +21,7 @@ var searchyes = false;
 window.localStorage.setItem("searchyes", "false")
 
 // this deletes all search results. Its used later if the search button has already been clicked
-function refreshsearch (){
+function refreshSearch (){
     
     $("#dashboard div").html("");
 };
@@ -30,11 +30,11 @@ function refreshsearch (){
 function foodsearch(){
 
     //this checks weather the search button has already been clocked.
-    var searchcheck = window.localStorage.getItem("searchyes");
+    var searchCheck = window.localStorage.getItem("searchyes");
 
     // if the search button as already been used once, this removes the old results, so the new search will replace them
-    if(searchcheck == "true"){
-        refreshsearch();
+    if(searchCheck == "true"){
+        refreshSearch();
     
     }
 
@@ -44,32 +44,30 @@ function foodsearch(){
         
     //Radio Button Logic 
 
-    var radiochoice1 = document.getElementById("alcohol");
-    var radiochoice2 = document.getElementById("lowsugar");
-    var radiochoice3 = document.getElementById("lowfat");
+    var radioChoice1 = document.getElementById("alcohol");
+    var radioChoice2 = document.getElementById("lowsugar");
+    var radioChoice3 = document.getElementById("lowfat");
     
     //if calories is checked
     var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e"
 
-    if(radiochoice1.checked){
+    if(radioChoice1.checked){
 
         var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&health=alcohol-free"
         
     }
     
-    if(radiochoice2.checked){
+    if(radioChoice2.checked){
         var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&health=sugar-conscious"
 
     }
     
-    if(radiochoice3.checked){
+    if(radioChoice3.checked){
         var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e&hdiet=low-fat"
 
     }
 
-    var apiUrl ="https://api.edamam.com/search?q=" + search + "&app_id=" + "04d0cb88" + "&app_key=" + "26b371c06377eb2bd8223951d66a129e"
-
-
+    
     fetch(apiUrl).then (function(response){
         if (response.ok) {
 
@@ -88,55 +86,55 @@ function foodsearch(){
             //name for first recipe
             var recipe1 = data.hits[0].recipe.label;
             //img for recipe
-            var recipe1img = data.hits[0].recipe.image;
+            var recipe1Img = data.hits[0].recipe.image;
             //link for recipe 
-            var recipe1link = data.hits[0].recipe.url;
+            var recipe1Link = data.hits[0].recipe.url;
             //list of ingredients
-            var recipe1ingr =data.hits[0].recipe.ingredientLines;
+            var recipe1Ingr =data.hits[0].recipe.ingredientLines;
 
 
             //Second Recipe
             //name for second recipe
             var recipe2 = data.hits[1].recipe.label;
             //img for recipe
-            var recipe2img = data.hits[1].recipe.image;  
+            var recipe2Img = data.hits[1].recipe.image;  
             //link for recipe 
-            var recipe2link = data.hits[1].recipe.url;
+            var recipe2Link = data.hits[1].recipe.url;
             //list of ingredients
-            var recipe2ingr =data.hits[1].recipe.ingredientLines;
+            var recipe2Ingr =data.hits[1].recipe.ingredientLines;
 
                     
             //Third Recipe
             //name for Third recipe
             var recipe3 = data.hits[2].recipe.label;
             //img for recipe
-            var recipe3img = data.hits[2].recipe.image;
+            var recipe3Img = data.hits[2].recipe.image;
             //link for recipe 
-            var recipe3link = data.hits[2].recipe.url;
+            var recipe3Link = data.hits[2].recipe.url;
             //list of ingredients
-            var recipe3ingr = data.hits[2].recipe.ingredientLines;
+            var recipe3Ingr = data.hits[2].recipe.ingredientLines;
 
 
                 //Fourth Recipe
             //name for Third recipe
-                var recipe4 = data.hits[3].recipe.label;
+            var recipe4 = data.hits[3].recipe.label;
             //img for recipe
-            var recipe4img = data.hits[3].recipe.image;
+            var recipe4Img = data.hits[3].recipe.image;
             //link for recipe 
-            var recipe4link = data.hits[3].recipe.url;
+            var recipe4Link = data.hits[3].recipe.url;
             //list of ingredients
-            var recipe4ingr = data.hits[3].recipe.ingredientLines;
+            var recipe4Ingr = data.hits[3].recipe.ingredientLines;
 
                 
             //Fifth Recipe
             //name for Fifth recipe
             var recipe5 = data.hits[4].recipe.label;
             //img for recipe
-            var recipe5img = data.hits[4].recipe.image;
+            var recipe5Img = data.hits[4].recipe.image;
             //link for recipe 
-            var recipe5link = data.hits[4].recipe.url;
+            var recipe5Link = data.hits[4].recipe.url;
             //list of ingredients
-            var recipe5ingr = data.hits[4].recipe.ingredientLines;
+            var recipe5Ingr = data.hits[4].recipe.ingredientLines;
 
             //write data 
             var group = document.getElementById("dashboard");
@@ -146,13 +144,13 @@ function foodsearch(){
 
 
             //write first thumb
-            var creatediv = document.createElement("div");
-            creatediv.setAttribute("Id","thumb0");
-            creatediv.setAttribute("class", "results");
-            creatediv.setAttribute("draggable", "true");
-            creatediv.style.backgroundImage = "url(" + recipe1img +")";
-            creatediv.innerHTML = "<a target='blank' Id='link0' href="+ recipe1link + ">" + recipe1 +"</a>";
-            flex1.appendChild(creatediv);
+            var createDiv = document.createElement("div");
+            createDiv.setAttribute("Id","thumb0");
+            createDiv.setAttribute("class", "results");
+            createDiv.setAttribute("draggable", "true");
+            createDiv.style.backgroundImage = "url(" + recipe1Img +")";
+            createDiv.innerHTML = "<a target='blank' Id='link0' href="+ recipe1Link + ">" + recipe1 +"</a>";
+            flex1.appendChild(createDiv);
 
             $("#thumb0").draggable({
                 opacity: 0.5,
@@ -167,9 +165,9 @@ function foodsearch(){
             flex1.appendChild(ingrlist1);
 
             //write ingr list 
-            for( i=0; i < recipe1ingr.length; i++){
+            for( i=0; i < recipe1Ingr.length; i++){
                 var ingr1 = document.createElement("P");
-                ingr1.textContent = recipe1ingr[i];
+                ingr1.textContent = recipe1Ingr[i];
                 ingrlist1.appendChild(ingr1);
             }
 
@@ -190,13 +188,13 @@ function foodsearch(){
             group.appendChild(flex2);
 
             //write second thumb
-            var creatediv2 = document.createElement("div");
-            creatediv2.setAttribute("Id","thumb1");
-            creatediv2.setAttribute("class", "results");
-            creatediv2.setAttribute("draggable", "true");
-            creatediv2.style.backgroundImage = "url(" + recipe2img +")";
-            creatediv2.innerHTML = "<a target='blank' Id='link1' href="+ recipe2link + ">" + recipe2 +"</a>";
-            flex2.appendChild(creatediv2);
+            var createDiv2 = document.createElement("div");
+            createDiv2.setAttribute("Id","thumb1");
+            createDiv2.setAttribute("class", "results");
+            createDiv2.setAttribute("draggable", "true");
+            createDiv2.style.backgroundImage = "url(" + recipe2Img +")";
+            createDiv2.innerHTML = "<a target='blank' Id='link1' href="+ recipe2Link + ">" + recipe2 +"</a>";
+            flex2.appendChild(createDiv2);
 
             $("#thumb1").draggable({
                 opacity: 0.5,
@@ -213,9 +211,9 @@ function foodsearch(){
             flex2.appendChild(ingrlist2);
 
             //write ingr list 
-            for( i=0; i < recipe2ingr.length; i++){
+            for( i=0; i < recipe2Ingr.length; i++){
                 var ingr2 = document.createElement("P");
-                ingr2.textContent = recipe2ingr[i];
+                ingr2.textContent = recipe2Ingr[i];
                 ingrlist2.appendChild(ingr2);
             }
 
@@ -237,13 +235,13 @@ function foodsearch(){
             group.appendChild(flex3);
 
             //write third thumb
-            var creatediv3 = document.createElement("div");
-            creatediv3.setAttribute("Id","thumb2");
-            creatediv3.setAttribute("draggable", "true");
-            creatediv3.setAttribute("class", "results");
-            creatediv3.style.backgroundImage = "url(" + recipe3img +")";
-            creatediv3.innerHTML = "<a target='blank' Id='link' href="+ recipe3link + ">" + recipe3 +"</a>";
-            flex3.appendChild(creatediv3);
+            var createDiv3 = document.createElement("div");
+            createDiv3.setAttribute("Id","thumb2");
+            createDiv3.setAttribute("draggable", "true");
+            createDiv3.setAttribute("class", "results");
+            createDiv3.style.backgroundImage = "url(" + recipe3Img +")";
+            createDiv3.innerHTML = "<a target='blank' Id='link' href="+ recipe3Link + ">" + recipe3 +"</a>";
+            flex3.appendChild(createDiv3);
 
             //write third recipe 
             var ingrlist3 = document.createElement("div");
@@ -258,9 +256,9 @@ function foodsearch(){
             });
 
             //write ingr list 
-            for( i=0; i < recipe3ingr.length; i++){
+            for( i=0; i < recipe3Ingr.length; i++){
                 var ingr3 = document.createElement("P");
-                ingr3.textContent = recipe3ingr[i];
+                ingr3.textContent = recipe3Ingr[i];
                 ingrlist3.appendChild(ingr3);
 
             }
@@ -283,13 +281,13 @@ function foodsearch(){
             group.appendChild(flex4);
 
             //write Fourth thumb
-            var creatediv4 = document.createElement("div");
-            creatediv4.setAttribute("Id","thumb3");
-            creatediv4.setAttribute("class", "results");
-            creatediv4.setAttribute("draggable", "true");
-            creatediv4.style.backgroundImage = "url(" + recipe4img +")";
-            creatediv4.innerHTML = "<a target='blank' Id='link' href="+ recipe4link + ">" + recipe4 +"</a>";
-            flex4.appendChild(creatediv4);
+            var createDiv4 = document.createElement("div");
+            createDiv4.setAttribute("Id","thumb3");
+            createDiv4.setAttribute("class", "results");
+            createDiv4.setAttribute("draggable", "true");
+            createDiv4.style.backgroundImage = "url(" + recipe4Img +")";
+            createDiv4.innerHTML = "<a target='blank' Id='link' href="+ recipe4Link + ">" + recipe4 +"</a>";
+            flex4.appendChild(createDiv4);
 
             //write fourth recipe 
             var ingrlist4 = document.createElement("div");
@@ -304,9 +302,9 @@ function foodsearch(){
             });
 
             //write ingr list 
-            for( i=0; i < recipe4ingr.length; i++) {
+            for( i=0; i < recipe4Ingr.length; i++) {
                 var ingr4 = document.createElement("P");
-                ingr4.textContent = recipe4ingr[i];
+                ingr4.textContent = recipe4Ingr[i];
                 ingrlist4.appendChild(ingr4);
             }
 
@@ -328,12 +326,12 @@ function foodsearch(){
             group.appendChild(flex5);
 
             //write Fourth thumb
-            var creatediv5 = document.createElement("div");
-            creatediv5.setAttribute("Id","thumb4");
-            creatediv5.setAttribute("class", "results");
-            creatediv5.style.backgroundImage = "url(" + recipe5img +")";
-            creatediv5.innerHTML = "<a target='blank' Id='link' href="+ recipe5link + ">" + recipe5 +"</a>";
-            flex5.appendChild(creatediv5);
+            var createDiv5 = document.createElement("div");
+            createDiv5.setAttribute("Id","thumb4");
+            createDiv5.setAttribute("class", "results");
+            createDiv5.style.backgroundImage = "url(" + recipe5Img +")";
+            createDiv5.innerHTML = "<a target='blank' Id='link' href="+ recipe5Link + ">" + recipe5 +"</a>";
+            flex5.appendChild(createDiv5);
 
             //write Fifth recipe 
             var ingrlist5 = document.createElement("div");
@@ -349,9 +347,9 @@ function foodsearch(){
             });
 
             //write ingr list 
-            for( i=0; i < recipe4ingr.length; i++) {
+            for( i=0; i < recipe5Ingr.length; i++) {
                 var ingr5 = document.createElement("P");
-                ingr5.textContent = recipe5ingr[i];
+                ingr5.textContent = recipe5Ingr[i];
                 ingrlist5.appendChild(ingr5);
             }
 
