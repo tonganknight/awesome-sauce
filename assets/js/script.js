@@ -1,4 +1,18 @@
+//this solves the drag function needed to refresh the first time. This will reload the page once it is opened, but only once 
+function refreshpage() {
+   
+    var currentDocumentTimestamp = new Date(performance.timing.domLoading).getTime();
+    
+    var now = Date.now();
+   
+    var tenSec = 10 * 1000;
 
+    var plusTenSec = currentDocumentTimestamp + tenSec;
+    if (now > plusTenSec) {
+    location.reload();
+    } else {}
+    }
+    refreshpage();
 
 
 // search logic check. this shows that the search bar has not been clocked yet 
@@ -636,6 +650,8 @@ function Load(){
             revert: true
             
         });
+
+       
 
     }
 
