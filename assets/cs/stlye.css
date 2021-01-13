@@ -20,6 +20,9 @@ a{
 }
 
 .ui{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     height: 100px;
     width: 100%;
     border-radius: 17px;
@@ -50,8 +53,13 @@ a{
 
 .fav{
     background-color: lightgrey;
-    height: 700px;
-    width: 100%;
+    margin-top: 30px;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    
+
     
 }
 .link{
@@ -86,19 +94,23 @@ a{
 }
 
 .savebutton{
-    height: 75px;
-    width: 100%;
-    margin-top: 13px;
+    height: 300px;
+    width: 100px;
+    margin-top: 30px;
     font-family: 'Dancing Script', cursive;
     font-size: 30px;
+}
+
+.savebuttontext{
+    writing-mode: vertical-lr;
 }
 
 
 .trash{
     margin: 0;
-    margin-top: 13px;
-    max-height: 773px;
-    max-width: 90px;
+    margin-top: 70px;
+    height: 300px;
+    max-width: 100px;
     background-color: red;
     color: white;
     padding: 0;
@@ -128,14 +140,15 @@ a{
 }
 
 
+
 /* this class is the results class exactly for display. Its used as a class for drop zone targeting*/
 .cankill{
         margin-top: 0px;
         margin-right: 5px;;
         background-color: var(--secondarycolor);
         background-size: cover;
-        height: 125px;
-        width: 100%;
+        height: 100%;
+        width: 25%;
         
     
 }
@@ -148,161 +161,3 @@ a{
 }
 
 
-/* Media Queries*/
-@media only screen and (max-width: 1880px ) {
-    
-    .results{
-        height: 250px;
-        width: 500px;
-    }
-
-    a{
-        font-size: 20px;  
-    }
-
-    .fav{
-        height: 800px;
-    }
-
-    .ingr{
-        font-size: 20px
-    }
-
-    .trash{
-        max-height: 875px;
-    }
-
-};
-
-@media only screen and (max-width: 1200px ) {
-
-    .ingr{
-        font-size: 25px;
-    }
-
-   
-}
-
-@media only screen and (max-width: 980px ) {
-
-    .results{
-        height: 150px;
-        width: 500px;
-    }
-
-    a{
-        font-size: 25px;  
-    }
-
-    .ingr{
-        font-size: 15px
-    }
-
-    .fav{
-        width: 500px;
-
-    }
-
-    .trash{
-        max-height: 875px;
-    }
-
-
-
-}
-
-@media only screen and (max-width: 875px ) {
-
-    .results{
-        margin-top: 0px;
-        margin-right: 5px;;
-        background-color: var(--secondarycolor);
-        background-size: cover;
-        height: 100px;
-        width: 150px;
-        border-radius: 17px;
-    }
-
-    .fav{
-        background-color: lightgrey;
-        height: 570px;
-        width: 100%; 
-    }
-
-    .cankill{
-        margin-top: 0px;
-        margin-right: 5px;;
-        background-color: var(--secondarycolor);
-        background-size: cover;
-        height: 125px;
-        width: 100%;
-
-    }
-
-    a{
-        font-size: 15px;
-        font-weight: bold;
-        background: whitesmoke;
-    }
-
-    
-    .ingr{
-    display: inline-block;
-    font-size: 12px;
-    font-weight: bold;
-    margin-left: 15px;
-    height: 100px;
-    width: 100%;
-    overflow: scroll;
-
-    }
-
-
-}
-
-@media only screen and (max-width: 520px ) {
-
-    .trash{
-        max-width: 75px;
-        
-    }
-
-    .savebutton{
-        margin-left: 0px;
-        width: 100px
-
-    }
-
-    .searchbar{
-        width:100%;
-    }
-
-    .start{
-        width: 100%;
-        height: 35px;
-        margin-left: 10px;
-        margin-right: 0px;
-    }
-
-    .fav{ 
-        width: 100px;
-        padding-right: 0px;
-        margin: 0px;
-    }
-    
-    .results{
-        width: 100px;
-        height: 100px;
-    }
-
-    .ingr{
-        width: 75px;
-    }
-
-    .inputsection{
-
-        max-width: 100px;
-    }
-
-
-}

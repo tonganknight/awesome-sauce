@@ -591,7 +591,80 @@ $("#dump").droppable({
                var thirdchild = document.getElementById("1").nextElementSibling.id = vin +2;
                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
-       }
+            }
+            if(divcount == 6){
+                var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
+                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                var thirdchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
+                var sixthchild = document.getElementById("4").nextElementSibling.id = vin +5;
+             }
+            if(divcount == 7){
+                var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
+                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                var thirdchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
+                var sixthchild = document.getElementById("4").nextElementSibling.id = vin +5;
+                var seventhchild = document.getElementById("5").nextElementSibling.id = vin +6;
+             }
+            if(divcount == 8){
+                var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
+                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                var thirdchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
+                var sixthchild = document.getElementById("4").nextElementSibling.id = vin +5;
+                var seventhchild = document.getElementById("5").nextElementSibling.id = vin +6;
+                var eighthchild = document.getElementById("6").nextElementSibling.id = vin +7;
+            }
+            if(divcount == 9){
+                var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
+                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                var thirdchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
+                var sixthchild = document.getElementById("4").nextElementSibling.id = vin +5;
+                var seventhchild = document.getElementById("5").nextElementSibling.id = vin +6;
+                var eighthchild = document.getElementById("6").nextElementSibling.id = vin +7;
+                var ninethchild = document.getElementById("6").nextElementSibling.id = vin +8;                           
+            }
+            if(divcount == 10){
+                var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
+                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                var thirdchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
+                var sixthchild = document.getElementById("4").nextElementSibling.id = vin +5;
+                var seventhchild = document.getElementById("5").nextElementSibling.id = vin +6;
+                var eighthchild = document.getElementById("6").nextElementSibling.id = vin +7;
+                var ninethchild = document.getElementById("7").nextElementSibling.id = vin +8;  
+                var tenthchild = document.getElementById("8").nextElementSibling.id = vin +9;                          
+            }
+            if(divcount > 10){
+                var firstchild = document.getElementById("fav").firstElementChild.setAttribute("id", vin);
+                var secondchild = document.getElementById("0").nextElementSibling.id = vin +1;
+                var thirdchild = document.getElementById("1").nextElementSibling.id = vin +2;
+                var fourthchild = document.getElementById("2").nextElementSibling.id = vin +3;
+                var fifthchild = document.getElementById("3").nextElementSibling.id = vin +4;
+                var sixthchild = document.getElementById("4").nextElementSibling.id = vin +5;
+                var seventhchild = document.getElementById("5").nextElementSibling.id = vin +6;
+                var eighthchild = document.getElementById("6").nextElementSibling.id = vin +7;
+                var ninethchild = document.getElementById("7").nextElementSibling.id = vin +8;  
+                var tenthchild = document.getElementById("8").nextElementSibling.id = vin +9; 
+
+                                document.getElementById("modaldiv").classList.add("is-active");
+                                document.getElementById("thedeal").textContent = "We are Sorry... We only support 10 saved recipes in this version"
+                                document.getElementById("modal-off").addEventListener("click", function(){
+                                document.getElementById("modaldiv").classList.remove("is-active") 
+                            });
+
+                }
+                        
+
+
+
 
        
 
