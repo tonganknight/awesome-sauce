@@ -1,10 +1,41 @@
-Leftovers
+# Leftovers                          
 
-Contributors are Malachi Alusa, Steven Baty, and Allec Ortega
+## Description
 
-This project, we wanted to take the simple idea of using left over ingredients you have in your fridge and look up a delicious recipe that you could make. We are using Edamam as our api. Edamam uses multiple api to gather the information we are presenting to the user. After the user types in the ingredients they have, they are presented up to 5 recipes using those ingredients. The user will see a thumbnail of an image of how the recipe will look when finished. The user will also see the name of the recipe at the top left which may be clicked. The user on desktop could hover over the recipe and an ingredient list would appear. On mobile the user will click the thumbnail to see the ingredient list. The user may also click on the name, that will be send them to the website that has that recipe in a new window. The user can learn more information and instructions of how to cook that recipe. If the user is happy with a recipe they can drag and drop that recipe into our favorite list on the right of the screen and click the save button. This will save the recipe to the user's local storage for later use. The user can also drag the recipe to the delete section which will delete the recipe from the favorite list.
+This is an application that allows you to search for recipes and see the ingredients before you visit the site. You can search meals, or list ingredients you have that you would like to cook with.  It also has a save feature that allows you to save recipes you have tried to a favorites list. You can also filter your searches by several health-conscious filters.
 
-For the drag and drop we used jquery.ui.touch-punch. When the recipe is dropped into the favorites sections, the id's are rewritten to prevent any errors from occuring. 
-If for what ever reason, there are no recipe's or an error with spelling, we have a modal that will pop up with a cute penguin who is cooking letting the user know.
-We used Bulma for our css. Bulma was easy to work with and uses columns for their css. We ran into an issue where we couldn't flex our a div to another row. We wanted to do this for visual appeal for the user on mobile.
-We also added 3 radio buttons the user can select when looking up recipe's. Those were alcohol free, low sugar, and low fat. This would help populate recipe's to the user that matches their needs. 
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [License](#license)
+         
+## installation 
+
+This application does not require any installation. Just visit the site and try it out. Do be careful with your searches do not exceed 5 searches per minute. 
+
+## Usage
+
+To use insert inInsert ingredients or meals that you wish to cook in the search bar. Click the search symbol. Below you will be presented a list of choices for you to select. Hover over each icon to see the ingredients. (On phone hold down the icon beneath the text) and you will be presented with an ingredient list. Click and drag your selection to the favorites bar and click the save button to save your results.  If you wish to delete content from your favorites bar, click and drag your saved recipe to the delete button on the far left. 
+
+## Features
+
+Multiple filter choices for searches. Formatted for PC and mobile. Dynamic drag and drop interface. Touchpunch UI for drag and drop functionality on mobile. Local storage for saved results.
+
+## Testing 
+
+Just visit the deployed project at https://tonganknight.github.io/awesome-sauce/
+
+## Credits
+
+Malachi Alusa, Steven Batty, Allec Ortega
+
+## License:
+
+For more information on the Licence on this Project visit https://whatis.techtarget.com/definition/BSD-licenses
+
+## Questions 
+
+If you have any questions about this project, or if you run into any issues please contact me at malachialusa@gmail.com
+or you can also find me on GitHub.com my username is tonganknight Please visit my profile page at https://github.com/tonganknight
+
