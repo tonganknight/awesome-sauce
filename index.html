@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">   
 
 
-
     <link rel="stylesheet" href="./assets/cs/stlye.css">
 
     <title>Document</title>
@@ -45,12 +44,21 @@
 
                     </div>
 
+                
+
+
          </div>
+
+
 
 
         </div>
         <button id="modal-off" class="modal-close is-large" aria-label="close"></button>
       </div>
+
+
+ 
+
     
         <div id="edamam-badge" data-color="white"></div>
 
@@ -76,31 +84,50 @@
                     </label>
                      
                 </div>
+
+
+
+
             </div>
 
-            <div class="control">
-                <input id="searchbar" class="input is-success searchbar"  type="text" placeholder="The Food you got!">
-                <button id="search" class=" start button is-success"><i class="fas fa-search"></i></button>
-            </div>
+            <div class=" columns is-mobile">
 
-            <div class="columns is-mobile">
-                <div class="field column">
-                    <div id="dashboard" class="group-items column ui">
+                <div class=" spacer field column">
+                    <div class="control">
+                        <input id="searchbar" class="input is-success searchbar"  type="text" placeholder="The Food you got!">
+                        <button id="search" class=" start button is-success"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class=" inputsection columns"> 
+                        <button id="greenbutton" class=" savebutton button is-success"><span class="savebuttontext">Save List</span></button>
+
+                         <div id="fav" class="fav column" >
+                            
+
+
+                            </div>
+
+                           
+
 
                     </div>
+                
                 </div>
-                <div class=" inputsection column"> 
-                    <button id="greenbutton" class=" savebutton button is-success">Save List</button>
 
-                    <div id="fav" class="fav" >
-
-                    </div>
-                </div>
                 <div id="dump" class=" trash column"><span class="trashtext">Delete</span>
 
                 </div>
-            </div>
+                        
 
+                
+            </div>
+<div id="dashboard" class="group-items column  ui">
+            
+
+                            </div>
+
+
+            
+                
                 <!--required badge-->   
                 <script src="https://developer.edamam.com/attribution/badge.js"></script>
                 <!--Jquery-->
